@@ -1,0 +1,106 @@
+.sign {
+    background-color: white;
+    color: black;
+    height: 33vw;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr;
+    box-sizing: border-box;
+    font-size: 4vw;
+    padding-right: 4%;
+  }
+
+  /* @media (prefers-color-scheme: dark) {
+    .sign {
+      background-color: #1e1e1e;
+      color: white;
+    }
+} */
+  
+  .top-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    padding-top: 1vw;
+  }
+  
+  .station-name {
+    display: grid;
+    align-items: top;
+    grid-template-rows: auto auto;
+  }
+  
+  .main-station-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 9vw;
+    line-height: 1.1;
+    margin-bottom: -4vw;
+  }
+  
+  .hiragana {
+    display: flex;
+    font-weight: 900;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2vw;
+    font-size: 3vw;
+  }
+  
+  .right-of-station-title {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+  
+  .translations {
+    padding-left: 2vw;
+    display: grid;
+    font-weight: 400;
+    grid-template-rows: auto auto 1fr;
+  }
+
+  .korean{
+    line-height: .7;
+  }
+  
+  .boxes {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto 1fr;
+    line-height: 1;
+    
+  }
+  
+  .box-1,
+  .box-2 {
+    border: 0.1rem solid black;
+    border-radius: 8%;
+    padding: .4vw;
+  }
+  
+  .box-2 {
+    background-color: black;
+    color: white;
+    font-weight: 800;
+  }
+  
+  .green-bar {
+    display: grid;
+    grid-template-columns: 1fr 6.6vw 1fr;
+    background-color: #006400;
+    min-height: 20%;
+  }
+  
+  .square {
+    height: 100%;
+    background-color: #9acd32;
+  }
+  
+  .station-romaji {
+    font-weight: 600;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
