@@ -24,9 +24,11 @@ function JRStationSign() {
         </div>
       </div>
       <div className="green-bar">
-        <div className="green-bar-left"></div>
+        <div className="green-bar-left-edge"></div>
+        <div></div>
         <div className="square"></div>
-        <div className="green-bar-right"></div>
+        <div></div>
+        <div className="green-bar-right-edge"></div>
       </div>
       <div className="station-romaji">Kanda</div>
     </div>
