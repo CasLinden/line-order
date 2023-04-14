@@ -1,21 +1,27 @@
 import "/src/css/jr-station-sign.css";
 
-function JRStationSign() {
+function JRStationSign({station}) {
+  const JP = station.JP;
+  const kanjiArray = JP.split("");
+
+
   return (
     <div className="sign">
       <div className="top-section">
         <div className="icon-container"></div>
         <div className="station-name">
           <div className="main-station-title">
-            <div>神</div>
-            <div>田</div>
+            {kanjiArray.map((kanji) => {
+              console.log(kanji)
+              return <div>{kanji}</div>;
+            })}
           </div>
-          <div className="hiragana">かんだ</div>
+          <div className="hiragana">{station.HR}</div>
         </div>
         <div className="right-of-station-title">
           <div className="translations">
-            <div className="chinese">神田</div>
-            <div className="korean">칸다</div>
+            {/* <div className="chinese">{station.CN}</div>
+            <div className="korean">{station.KR}</div> */}
           </div>
           <div className="boxes">
             <div className="box-1">山</div>
@@ -30,7 +36,7 @@ function JRStationSign() {
         <div></div>
         <div className="green-bar-right-edge"></div>
       </div>
-      <div className="station-romaji">Kanda</div>
+      <div className="station-romaji">{station.EN}</div>
     </div>
   );
 }

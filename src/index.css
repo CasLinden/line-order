@@ -39,3 +39,8 @@
     background-color: #f9f9f9;
   }
 }
+
+.available-stations{
+  display: grid;
+  gap: 10px;
+}
