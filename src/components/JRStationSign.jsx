@@ -1,19 +1,18 @@
 import "/src/css/jr-station-sign.css";
+import { v4 as uuidv4 } from "uuid";
 
-function JRStationSign({station}) {
+function JRStationSign({station, pick}) {
   const JP = station.JP;
   const kanjiArray = JP.split("");
 
-
   return (
-    <div className="sign">
+    <div className="sign" onClick={ () => pick()}>
       <div className="top-section">
         <div className="icon-container"></div>
         <div className="station-name">
           <div className="main-station-title">
             {kanjiArray.map((kanji) => {
-              console.log(kanji)
-              return <div>{kanji}</div>;
+              return <div key={ uuidv4() }>{kanji}</div>;
             })}
           </div>
           <div className="hiragana">{station.HR}</div>
