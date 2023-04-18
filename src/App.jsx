@@ -1,12 +1,14 @@
 import Game from '/src/components/Game'
-import './App.css'
+import { CurrentLineProvider } from './CurrentLineContext'
+import '/src/css/App.css'
 
 function App() {
-  
 
   return (
     <div className="App">
-      <Game />
+      <CurrentLineProvider>
+        <Game/>
+      </CurrentLineProvider>
     </div>
   )
 }

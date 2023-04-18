@@ -1,9 +1,16 @@
 import JRStyleIcon from './JRStyleIcon';
 
 
-function PickedStations () {
+function PickedStations ({pickedStations}) {
 return(
-<JRStyleIcon num="25" abr="SGW"></JRStyleIcon>
+    <div className="picked-stations">
+        {pickedStations.map((station) => {
+            
+            return <JRStyleIcon station={station} key={station} />
+        }   
+        )}
+    </div>
+
 )
 
 }
