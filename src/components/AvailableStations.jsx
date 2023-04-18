@@ -1,11 +1,12 @@
+import { useState, useContext } from "react";
+import { CurrentLineContext } from "/src/CurrentLineContext";
 import JRStationSign from "./JRStationSign";
-import { v4 as uuidv4 } from "uuid";
-import yamanote from "/src/lines/yamanote";
 import station from "/src/utils/station";
-import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function AvailableStations({ pickStation }) {
-  const [unPickedStations, setUnPickedStations] = useState(yamanote.EN);
+  const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
+  const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
 
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));
@@ -21,7 +22,7 @@ function AvailableStations({ pickStation }) {
       {unPickedStations.map((stat) => {
         return (
           <JRStationSign
-            station={station(stat, yamanote)}
+            station={station(stat, currentLine)}
             key={uuidv4()}
             pick={() => {
               processPick(stat);
