@@ -44,3 +44,7 @@
   display: grid;
   gap: 10px;
 }
+
+.station-search {
+  width: clamp(100px, 90vw, 500px);
+}
