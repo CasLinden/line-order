@@ -8,7 +8,9 @@ import { v4 as uuidv4 } from "uuid";
 function AvailableStations({ pickStation }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [query, setQuery] = useState("");
-  const [unPickedStations, setUnPickedStations] = useState(shuffleArray(currentLine.EN.slice()));
+  const [unPickedStations, setUnPickedStations] = useState(
+    shuffleArray(currentLine.EN.slice())
+  );
   // const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));
@@ -24,13 +26,22 @@ function AvailableStations({ pickStation }) {
       stat.toLowerCase().includes(query.toLocaleLowerCase()) ||
       station(stat, currentLine).JP.includes(query) ||
       station(stat, currentLine).HR.includes(query)
-    )
+    );
   });
-  
 
   return (
     <div className="available-stations">
-      <input className="station-search" placeholder="Search..." value={query} onChange={ e => setQuery(e.target.value)} type="search" />
+      <input
+        className="station-search"
+        placeholder={"Search..."}
+        onFocus={(e) => {
+          e.target.value = "";
+          setQuery("");
+        }}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        type="search"
+      />
       {filteredUnPickedStations.map((stat) => {
         return (
           <JRStationSign

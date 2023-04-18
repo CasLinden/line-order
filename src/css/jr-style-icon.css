@@ -60,3 +60,9 @@
     bottom: 0.8px;
     left: 0;
 }
+
+.icon-holder{
+    display: grid;
+    grid-template-rows: 60px 1.5rem;
+}
+

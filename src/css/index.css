@@ -48,3 +48,12 @@
 .station-search {
   width: clamp(100px, 90vw, 500px);
 }
+
+.nowrap {
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: "...";
+ 
+}
