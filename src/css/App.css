@@ -1,4 +1,9 @@
 .App{
     display: grid;
-    grid-template-rows: 25vh 1fr;
+    grid-template-rows: clamp(25vh 30vh 70vh) 1fr;
+    width: clamp(320px, 100vw, 800px);
 }
+
+
+
+

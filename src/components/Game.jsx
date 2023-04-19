@@ -8,7 +8,7 @@ function Game() {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [pickedStations, setPickedStations] = useState([]);
   const [lastPickedStation, setLastPickedStation] = useState(null);
-  const [counterClockWise, setCounterClockWise] = useState(false);
+  const [backwards, setBackwards] = useState(false);
 
   const checkPick = (station) => {
     if (pickedStations.length === 0) return true; // first station
@@ -29,7 +29,7 @@ function Game() {
 
   const nextStationIndex = () => {
     const currentIndex = stationIndex(lastPickedStation, currentLine);
-    if (counterClockWise) {
+    if (backwards) {
       return currentIndex - 1;
     } else {
       return currentIndex + 1;

@@ -1,3 +1,10 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: Arial, sans-serif;
   line-height: 1.5;
@@ -25,6 +32,9 @@
   button {
     background-color: #3a3a3a;
   }
+  .sign{
+    border-color: rgba(255, 255, 255, 0.87);
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -38,22 +48,10 @@
   button {
     background-color: #f9f9f9;
   }
+
+  .sign{
+    border-color:#242424;
+  }
 }
 
-.available-stations{
-  display: grid;
-  gap: 10px;
-}
 
-.station-search {
-  width: clamp(100px, 90vw, 500px);
-}
-
-.nowrap {
-  display: inline-block;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: "...";
- 
-}

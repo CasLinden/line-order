@@ -4,7 +4,7 @@
     return (
         <div className="icon-holder">
             {children}
-            <span className={classes}>{stationTitle}</span>
+            <div className={classes}>{stationTitle}</div>
         </div>
     )
 }

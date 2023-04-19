@@ -9,21 +9,52 @@ import "/src/css/picked-stations.css";
 function PickedStations({ pickedStations }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   return (
-    <div className="picked-stations">
-      {pickedStations.map((stat) => {
-        let currentStat = station(stat, currentLine);
-        let abr = currentLine.main[stat];
-        return (
-            <IconHolder  key={uuidv4()} stationTitle={currentStat.JP}>
-              <JRStyleIcon
-                num={currentStat.num}
-                abr={abr ? abr : null}
-              />
+    
+    <>
+    {pickedStations && pickedStations.length === 0 ? (
+      <div className="picked-stations-placeholder">
+        <span>Pick a station to depart from</span>
+        <span>出発駅を選択してください</span>
+      </div>
+    ) : (
+      <div className="picked-stations">
+        {pickedStations.map((stat) => {
+          let currentStat = station(stat, currentLine);
+          let abr = currentLine.main[stat];
+          return (
+            <IconHolder key={uuidv4()} stationTitle={currentStat.JP}>
+              <JRStyleIcon num={currentStat.num} abr={abr ? abr : null} />
             </IconHolder>
-        );
-      })}
-    </div>
-  );
+          );
+        })}
+      </div>
+    )}
+  </>
+);
+      
+        // {pickedStations.length === 0 && (
+        //   <div className="picked-stations-placeholder">
+        //       This is a placeholder for when no stations have been picked.
+        //   </div>
+        //   )}
+        
+        
+        // <div className="picked-stations">
+        //   {pickedStations.map((stat) => {
+        //     let currentStat = station(stat, currentLine);
+        //     let abr = currentLine.main[stat];
+        //     return (
+        //         <IconHolder  key={uuidv4()} stationTitle={currentStat.JP}>
+        //           <JRStyleIcon
+        //             num={currentStat.num}
+        //             abr={abr ? abr : null}
+        //           />
+        //         </IconHolder>
+        //     );
+        //   })}
+        // </div>
+      
+    
 }
 
 export default PickedStations;

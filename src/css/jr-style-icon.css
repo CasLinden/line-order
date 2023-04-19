@@ -1,3 +1,7 @@
+.picked-station{
+    justify-self: center;
+}
+
 
 .main-station{
     vertical-align: middle;
@@ -24,6 +28,7 @@
 
 
 .station-icon{
+    box-sizing: content-box;
     position: absolute;
     vertical-align: middle;
     top: 16px;
