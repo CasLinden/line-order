@@ -2,21 +2,13 @@
   background-color: white;
   color: #242424;
   height: clamp(100px, 30vw, 166.67px);
-  width: clamp(300px, 95vw, 500px); 
+  width: clamp(320px, 1fr, 639px); 
   display: grid;
   grid-template-rows: 3fr 1fr 1fr;
   box-sizing: border-box;
-  border: .2rem solid;
-  
-  
+  border: .4rem solid black;
 }
 
-@media (prefers-color-scheme: dark) {
-    .sign {
-      background-color: #1e1e1e;
-      color: white;
-    }
-}
 
 .top-section {
   display: grid;
@@ -45,6 +37,7 @@
   font-weight: 900;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   padding-left: clamp(1px, 5px, 10px);
   letter-spacing: (1px, 5px, 10px);
   font-size: clamp(10px, 3vw, 16px);
@@ -74,6 +67,7 @@
   gap: 3px;
   line-height: 1;
   font-size: clamp(12px, 3vw, 20px);
+  padding: .2rem;
 }
 
 .box-1,

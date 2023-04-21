@@ -1,11 +1,26 @@
 .available-stations{
-    display: grid;
-    gap: 10px;
-    margin-top: 1rem;
-    justify-items: center;
+  display: grid;
+  padding: .4rem;
+}
+
+.available-stations-signs {
+  display: grid;
+  gap: .4rem;
+}
+
+@media (min-width: 640px)  {
+  .available-stations-signs {
+    grid-template-columns: repeat(2, minmax(320px, 500px));
   }
-  
-  .station-search {
-    width: clamp(100px, 90vw, 500px);
+}
+
+@media (max-width: 639px) {
+  .available-stations-signs {
+    grid-template-columns: 1fr;
   }
-  
+}
+
+.station-search{
+  width: 75%;
+  justify-self: center;
+}

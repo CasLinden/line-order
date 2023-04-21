@@ -13,6 +13,7 @@ function AvailableStations({ pickStation }) {
   //   shuffleArray(currentLine.EN.slice())
   // );
   const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
+  
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));
   };
@@ -43,17 +44,19 @@ function AvailableStations({ pickStation }) {
         onChange={(e) => setQuery(e.target.value)}
         type="search"
       />
-      {filteredUnPickedStations.map((stat) => {
-        return (
-          <JRStationSign
-            station={station(stat, currentLine)}
-            key={uuidv4()}
-            pick={() => {
-              processPick(stat);
-            }}
-          />
-        );
-      })}
+      <div className="available-stations-signs">
+        {filteredUnPickedStations.map((stat) => {
+          return (
+            <JRStationSign
+              station={station(stat, currentLine)}
+              key={uuidv4()}
+              pick={() => {
+                processPick(stat);
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
