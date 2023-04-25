@@ -1,7 +1,6 @@
 import "/src/css/jr-style-icon.css";
 
 function JRStyleIcon({ num, abr }) {
-    // if (abr) {
         return (
             <div className="picked-station">
                 <div className="main-station" style={{ background: abr ? 'black' : 'none' }}>

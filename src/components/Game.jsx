@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect} from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import loopBackwards from "/src/utils/loopBackwards";
 import stationIndex from "../utils/stationIndex";
@@ -8,7 +8,6 @@ import AvailableStations from "/src/components/AvailableStations";
 function Game() {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [pickedStations, setPickedStations] = useState([]);
-  const [lastPickedStation, setLastPickedStation] = useState(null);
   const [goingBackwards, setGoingBackwards]  = useState(false);
 
   const checkPick = (station) => {
@@ -22,17 +21,25 @@ function Game() {
     return false;
   };
 
-  const pickStation = (station) => {
+  const pickStation = (station, removeStation) => {
     if (checkPick(station)) {
-      setPickedStations([...pickedStations, station]);
-      setLastPickedStation(station);
+      updatePickedStations(station)
+      removeStation(station);
     } else {
       alert("Wrong station! Try again.");
     }
   };
 
+  const updatePickedStations = (station) => {
+    if (goingBackwards) {
+      setPickedStations([station, ...pickedStations]);
+    } else {
+      setPickedStations([...pickedStations, station]);
+    }
+  }
+
   const allowUserIntendedStartingDirection = (pickIndex) => { //user might intend to go goingBackwards, which this function allows
-    const currentIndex = stationIndex(lastPickedStation, currentLine);
+    const currentIndex = stationIndex(pickedStations[0], currentLine);
     let forwards = currentIndex + 1;
     let backwards = currentIndex === 1 ? loopBackwards(currentIndex, currentLine) : currentIndex - 1;
     if (backwards === pickIndex) {
@@ -46,10 +53,12 @@ function Game() {
   };
 
   const nextStationIndex = () => {
-    const currentIndex = stationIndex(lastPickedStation, currentLine);
+    let currentIndex
     if (!goingBackwards) { 
+      currentIndex = stationIndex(pickedStations[pickedStations.length-1], currentLine);
       return currentIndex + 1;
     } else {
+      currentIndex = stationIndex(pickedStations[0], currentLine);
       const timeToLoop = loopBackwards(currentIndex, currentLine);
       if (timeToLoop) {
         return timeToLoop
@@ -61,7 +70,7 @@ function Game() {
 
   return (
     <>
-      <PickedStations pickedStations={pickedStations} />
+      <PickedStations pickedStations={pickedStations} goingBackwards={goingBackwards} setGoingBackwards={setGoingBackwards} />
       <AvailableStations pickStation={pickStation} />
     </>
   );

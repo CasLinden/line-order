@@ -1,16 +1,30 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import JRStyleIcon from "./JRStyleIcon";
 import IconHolder from "./IconHolder";
 import station from "/src/utils/station";
 import { v4 as uuidv4 } from "uuid";
 import stationIndex from "/src/utils/stationIndex";
+import arrows from "/src/assets/arrows.svg";
 import "/src/css/picked-stations.css";
 
-function PickedStations({ pickedStations }) {
+function PickedStations({ pickedStations, goingBackwards, setGoingBackwards }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
+  const backwardsRef = useRef(null);
+  const forwardsRef = useRef(null);
 
-  const indexSortedStations = pickedStations.map((stat) => stationIndex(stat, currentLine)).toSorted((a, b) => a - b).map((index) => currentLine.EN[index -1])
+  const handleBackwardsArrowClick = () => {
+    setGoingBackwards(true);
+    forwardsRef.current.classList.add("inactive-arrow-container");
+    backwardsRef.current.classList.remove("inactive-arrow-container");
+  }
+
+  const handleForwardsArrowClick = () => {
+    setGoingBackwards(false);
+    forwardsRef.current.classList.remove("inactive-arrow-container");
+    backwardsRef.current.classList.add("inactive-arrow-container");
+  }
+
   return (
     <>
       {pickedStations && pickedStations.length === 0 ? (
@@ -19,8 +33,11 @@ function PickedStations({ pickedStations }) {
           <span>出発駅を選択してください</span>
         </div>
       ) : (
-        <div className="picked-stations">
-          {indexSortedStations.map((stat) => {
+        <div className="picked-stations-container">
+          <div className="backwards-arrows-container" ref={backwardsRef}>
+            <img className="backwards-arrows" onClick={handleBackwardsArrowClick} src={arrows}></img>
+          </div>
+          {pickedStations.map((stat) => {
             let currentStat = station(stat, currentLine);
             let abr = currentLine.main[stat];
             return (
@@ -29,6 +46,9 @@ function PickedStations({ pickedStations }) {
               </IconHolder>
             );
           })}
+          <div className="forwards-arrows-container" ref={forwardsRef}>
+            <img className="forwards-arrows" onClick={handleForwardsArrowClick} src={arrows}></img>
+          </div>
         </div>
       )}
     </>

@@ -9,18 +9,17 @@ import "/src/css/available-stations.css";
 function AvailableStations({ pickStation }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [query, setQuery] = useState("");
-  const [unPickedStations, setUnPickedStations] = useState(
-    shuffleArray(currentLine.EN.slice())
-  );
-  // const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
+  // const [unPickedStations, setUnPickedStations] = useState(
+  //   shuffleArray(currentLine.EN.slice())
+  // );
+  const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
   
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));
   };
 
   const processPick = (station) => {
-    pickStation(station);
-    removeStation(station);
+    pickStation(station, removeStation);
   };
 
   const filteredUnPickedStations = unPickedStations.filter((stat) => {
@@ -30,6 +29,8 @@ function AvailableStations({ pickStation }) {
       station(stat, currentLine).HR.includes(query)
     );
   });
+
+
 
   return (
     <div className="available-stations">
