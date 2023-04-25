@@ -1,6 +1,7 @@
 .available-stations{
   display: grid;
   padding: .4rem;
+  background-color: #1e1e1e;
 }
 
 .available-stations-signs {
@@ -21,6 +22,11 @@
 }
 
 .station-search{
-  width: 75%;
+  width: 50%;
   justify-self: center;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  margin-bottom: 5px;
 }
