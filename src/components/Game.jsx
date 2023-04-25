@@ -9,7 +9,7 @@ function Game() {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [pickedStations, setPickedStations] = useState([]);
   const [lastPickedStation, setLastPickedStation] = useState(null);
-  let goingBackwards = false;
+  const [goingBackwards, setGoingBackwards]  = useState(false);
 
   const checkPick = (station) => {
     if (pickedStations.length === 0) return true; // first station
@@ -32,16 +32,11 @@ function Game() {
   };
 
   const allowUserIntendedStartingDirection = (pickIndex) => { //user might intend to go goingBackwards, which this function allows
-    let forwards 
-    let backwards
-    if (!goingBackwards){
-      goingBackwards = true 
-      backwards = nextStationIndex()
-    }
-    goingBackwards = false 
-    forwards = nextStationIndex()
+    const currentIndex = stationIndex(lastPickedStation, currentLine);
+    let forwards = currentIndex + 1;
+    let backwards = currentIndex === 1 ? loopBackwards(currentIndex, currentLine) : currentIndex - 1;
     if (backwards === pickIndex) {
-      goingBackwards = true
+      setGoingBackwards(true)
       return true 
     } else if (forwards === pickIndex) {
       return true 
