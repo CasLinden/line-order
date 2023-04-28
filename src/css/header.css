@@ -24,24 +24,16 @@
     align-items: center;
   }
 
-  .site-title.line{
-
-  }
 
   .site-title .legend{
     text-decoration: underline #79B5B5;
   }
 
   .site-title > div{
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: 700;
   }
 
-  .site-title > span{
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #79B5B5;
-  }
 
   .header-left{
     display: flex;

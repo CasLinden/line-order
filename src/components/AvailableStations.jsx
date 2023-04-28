@@ -9,10 +9,10 @@ import "/src/css/available-stations.css";
 function AvailableStations({ pickStation }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [query, setQuery] = useState("");
-  // const [unPickedStations, setUnPickedStations] = useState(
-  //   shuffleArray(currentLine.EN.slice())
-  // );
-  const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
+  const [unPickedStations, setUnPickedStations] = useState(
+    shuffleArray(currentLine.EN.slice())
+  );
+  // const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
   
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));
