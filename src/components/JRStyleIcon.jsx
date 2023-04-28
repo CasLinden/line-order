@@ -2,7 +2,7 @@ import "/src/css/jr-style-icon.css";
 
 function JRStyleIcon({ num, abr }) {
         return (
-            <div className="picked-station">
+            <div className="picked-station-icon">
                 <div className="main-station" style={{ background: abr ? 'black' : 'none' }}>
                     <span className="outer-title">{abr}</span>
                     <span className="station-icon">

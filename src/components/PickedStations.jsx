@@ -14,18 +14,6 @@ function PickedStations({ pickedStations, goBackwards, setGoingBackwards }) {
   const forwardsRef = useRef(null);
 
 
-  // const handleBackwardsArrowClick = () => {
-  //   setGoingBackwards(true);
-  //   forwardsRef.current.classList.add("inactive-arrow-container");
-  //   backwardsRef.current.classList.remove("inactive-arrow-container");
-  // }
-
-  // const handleForwardsArrowClick = () => {
-  //   setGoingBackwards(false);
-  //   forwardsRef.current.classList.remove("inactive-arrow-container");
-  //   backwardsRef.current.classList.add("inactive-arrow-container");
-  // }
-
   return (
     <>
       {pickedStations && pickedStations.length === 0 ? (

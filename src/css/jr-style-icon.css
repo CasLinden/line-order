@@ -1,4 +1,5 @@
-.picked-station{
+
+.picked-station-icon{
     justify-self: center;
 }
 
@@ -33,7 +34,7 @@
     vertical-align: middle;
     top: 16px;
     left: 4px;
-    border: 4px solid #9ACD32;
+    border: 4px solid var(--currentline-color);
     border-radius: 10%;
     height: 32px;
     width: 32px;
@@ -66,8 +67,5 @@
     left: 0;
 }
 
-.icon-holder{
-    display: grid;
-    grid-template-rows: 60px 1.5rem;
-}
+
 

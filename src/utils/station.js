@@ -5,7 +5,7 @@ export default function station (stationEN, line) {
         EN: stationEN,
         JP: line.JP[index],
         HR: line.HR[index],
-        CN: line.CN[index],
-        KR: line.KR[index],
+        // CN: line.CN[index],
+        // KR: line.KR[index],
     }
 }

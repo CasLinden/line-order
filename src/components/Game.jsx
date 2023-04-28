@@ -35,9 +35,6 @@ function Game() {
   const goBackwards = (booli) => {
     setGoingBackwards(booli)
     toggleDirectionArrowsCss(booli)
-    setTimeout(() => {
-      console.log(goingBackwards)
-    }, 1000);
   }
 
   const updatePickedStations = (station) => {

@@ -1,5 +1,6 @@
 const yamanote = {
   loop: true,
+  conor:  '#9ACD32', 
   JP: [
     "東京",
     "神田",
