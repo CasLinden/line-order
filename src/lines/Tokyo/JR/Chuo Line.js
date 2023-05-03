@@ -1,4 +1,8 @@
 const chuo = {
+  nativeTitle: "中央線",
+  title: "Chuo Line",
+  city: "Tokyo",
+  group: "JR",
   loop: false,
   color: "#FF4500",
   JP: [

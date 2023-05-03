@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import loopBackwards from "/src/utils/loopBackwards";
 import loopForwards from "/src/utils/loopForwards";
@@ -11,6 +11,10 @@ function Game() {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [pickedStations, setPickedStations] = useState([]);
   const [goingBackwards, setGoingBackwards] = useState(false);
+
+  useEffect(() => {
+    setPickedStations([]);
+  }, [currentLine]);
 
   const checkPick = (station) => {
     if (pickedStations.length === 0) return true; // first station
@@ -28,7 +32,7 @@ function Game() {
       updatePickedStations(station);
       removeStation(station);
     } else {
-      alert("Wrong station! Try again.");
+      // logic for life-loss or something goes here
     }
   };
 

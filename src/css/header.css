@@ -7,9 +7,9 @@
     background-color:  #1e1e1e;
     color: rgba(255, 255, 255, 0.87);
     height: 50px;
-    margin-bottom: 10px;
-    padding: 1rem;
+    padding: 1rem 0rem 1rem 1rem;
     flex: 1;
+    border-bottom: var(--border);
   }
 
   .header-train-image{
@@ -30,7 +30,7 @@
   }
 
   .site-title > div{
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(1.5rem, 3vw, 1.5rem);
     font-weight: 700;
   }
 
@@ -40,7 +40,13 @@
     align-items: center;
   }
 
-  .header-right{
-    display: flex;
-    gap: 1rem;
+  @media screen and (max-width: 620px) {
+    .header-train-image{
+      width: 0px;
+      height: 0px;
+    }
   }
+    
+  
+
+

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import JRStationSign from "./JRStationSign";
 import station from "/src/utils/station";
@@ -12,8 +12,11 @@ function AvailableStations({ pickStation }) {
   const [unPickedStations, setUnPickedStations] = useState(
     shuffleArray(currentLine.EN.slice())
   );
-  // const [unPickedStations, setUnPickedStations] = useState(currentLine.EN);
-  
+
+  useEffect(() => {
+    setUnPickedStations(shuffleArray(currentLine.EN.slice()));
+  }, [currentLine]);
+
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));
   };
@@ -30,8 +33,6 @@ function AvailableStations({ pickStation }) {
     );
   });
 
-
-
   return (
     <div className="available-stations">
       <input
@@ -47,16 +48,16 @@ function AvailableStations({ pickStation }) {
       />
       <div className="available-stations-signs">
         {filteredUnPickedStations.map((stat) => {
-          return (
-            <JRStationSign
-              station={station(stat, currentLine)}
-              key={uuidv4()}
-              pick={() => {
-                processPick(stat);
-              }}
-            />
-          );
-        })}
+            return (
+              <JRStationSign
+                station={station(stat, currentLine)}
+                key={uuidv4()}
+                pick={() => {
+                  processPick(stat);
+                }}
+              />
+            );
+          })}
       </div>
     </div>
   );

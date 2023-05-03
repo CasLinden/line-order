@@ -1,7 +1,10 @@
 .available-stations{
   display: grid;
   padding: .4rem;
-  background-color: #1e1e1e;
+  background-color: var(--bg-accent);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  border-radius: var(--border-radius);
 }
 
 .available-stations-signs {
