@@ -4,9 +4,6 @@ export const linesCatalog = {
     "Tokyo": {
         "JR": ['Yamanote Line', 'Chuo Line']
     },
-    "London": {
-        "Tube": ['Circle', 'Central']
-    }
 }
 
 export const getCities = () => {
