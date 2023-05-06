@@ -40,3 +40,12 @@
   width: 15px;
 }
 
+@media (max-width: 499px) {
+  .overflow-hidden {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
