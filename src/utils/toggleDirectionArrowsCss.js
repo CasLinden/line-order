@@ -4,7 +4,7 @@ function toggleDirectionArrowsCss(goingBackwards) {
   if (goingBackwards === true) {
     forwardsArrows.classList.add("inactive-arrow-container");
     backwardsArrows.classList.remove("inactive-arrow-container");
-  } else if (goingBackwards === false) {
+  } else {
     backwardsArrows.classList.add("inactive-arrow-container");
     forwardsArrows.classList.remove("inactive-arrow-container");
   }

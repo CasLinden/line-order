@@ -1,7 +1,6 @@
 import { useContext, useRef, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import JRStyleIcon from "./JRStyleIcon";
-import toggleDirectionArrowsCss from "/src/utils/toggleDirectionArrowsCss";
 import IconHolder from "./IconHolder";
 import station from "/src/utils/station";
 import { v4 as uuidv4 } from "uuid";
@@ -25,7 +24,6 @@ function PickedStations({ pickedStations, goBackwards, setGoingBackwards }) {
         <div className="picked-stations-container">
           <div className="backwards-arrows-container" ref={backwardsRef}>
             <img className="backwards-arrows" onClick={() => {
-              toggleDirectionArrowsCss(true) 
               goBackwards(true)}
               } src={arrows}></img>
           </div>
@@ -40,7 +38,6 @@ function PickedStations({ pickedStations, goBackwards, setGoingBackwards }) {
           })}
           <div className="forwards-arrows-container" ref={forwardsRef}>
             <img className="forwards-arrows" onClick={() => {
-              toggleDirectionArrowsCss(false) 
               goBackwards(false)}
               } src={arrows}></img>
           </div>

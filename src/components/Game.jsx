@@ -6,17 +6,18 @@ import stationIndex from "/src/utils/stationIndex";
 import PickedStations from "/src/components/PickedStations";
 import AvailableStations from "/src/components/AvailableStations";
 import toggleDirectionArrowsCss from "../utils/toggleDirectionArrowsCss";
+import clearStationSearchInput from "/src/utils/clearStationSearchInput";
 
 function Game() {
-  const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
+  const { currentLine } = useContext(CurrentLineContext);
   const [pickedStations, setPickedStations] = useState([]);
-  const [goingBackwards, setGoingBackwards] = useState(false);
+  const [goingBackwards, setGoingBackwards] = useState(null);
 
   useEffect(() => {
     setPickedStations([]);
   }, [currentLine]);
 
-  const checkPick = (station) => {
+  const isCorrect = (station) => {
     if (pickedStations.length === 0) return true; // first station
     const nextIndex = nextStationIndex();
     const pickIndex = stationIndex(station, currentLine);
@@ -28,29 +29,66 @@ function Game() {
   };
 
   const pickStation = (station, removeStation) => {
-    if (checkPick(station)) {
+    if (isCorrect(station)) {
       updatePickedStations(station);
       removeStation(station);
+      clearStationSearchInput();
     } else {
       // logic for life-loss or something goes here
     }
   };
 
-  const goBackwards = (booli) => {
-    setGoingBackwards(booli)
-    toggleDirectionArrowsCss(booli)
-  }
+  const appendToPickedStations = (station) => {
+    setPickedStations([...pickedStations, station]);
+  };
+  
+  const prependToPickedStations = (station) => {
+    setPickedStations([station, ...pickedStations]);
+  };
 
   const updatePickedStations = (station) => {
-    if (goingBackwards) {
-      setPickedStations([station, ...pickedStations]);
+    if(pickedStations.length === 1 && goingBackwards === null) {
+      updateWithUserIntendedDirection(station)
+      return
+    }
+    if (!goingBackwards) {
+      appendToPickedStations(station);
     } else {
-      setPickedStations([...pickedStations, station]);
+      prependToPickedStations(station);
     }
   };
 
+  const updateWithUserIntendedDirection = (station) => {
+    const startingStationIndex = stationIndex(pickedStations[0], currentLine);
+    const pickedStationIndex = stationIndex(station, currentLine);
+    const diff = startingStationIndex - pickedStationIndex;
+    if (diff === 1){
+      prependToPickedStations(station)
+      return 
+    } else if (diff === -1){
+      appendToPickedStations(station)
+      return
+    } else if (diff < -1){
+      const timeToLoop = loopBackwards(startingStationIndex, currentLine)
+      if (pickedStationIndex === timeToLoop) {
+        prependToPickedStations(station)
+        return
+      }
+    } else if (diff > 1){
+      const timeToLoop = loopForwards(startingStationIndex, currentLine)
+      if (pickedStationIndex === timeToLoop) {
+      appendToPickedStations(station)
+    }
+  };
+}
+
+  const goBackwards = (booli) => {
+    setGoingBackwards(booli);
+    toggleDirectionArrowsCss(booli);
+  };
+
   const allowUserIntendedStartingDirection = (pickIndex) => {
-    //user might intend to go goingBackwards, which this function allows
+    if (pickedStations.length !== 1) return false;
     const currentIndex = stationIndex(pickedStations[0], currentLine);
     let forwards =
       currentIndex === currentLine.EN.length - 1 ? 1 : currentIndex + 1;
@@ -59,10 +97,10 @@ function Game() {
         ? loopBackwards(currentIndex, currentLine)
         : currentIndex - 1;
     if (backwards === pickIndex) {
-      goBackwards(true)
+      goBackwards(true);
       return true;
     } else if (forwards === pickIndex) {
-      goBackwards(false)
+      goBackwards(false);
       return true;
     } else {
       return false;
@@ -72,7 +110,7 @@ function Game() {
   const nextStationIndex = () => {
     let currentIndex;
     if (!goingBackwards) {
-        currentIndex = stationIndex(
+      currentIndex = stationIndex(
         pickedStations[pickedStations.length - 1],
         currentLine
       );

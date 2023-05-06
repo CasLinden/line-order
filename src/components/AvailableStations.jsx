@@ -53,7 +53,7 @@ function AvailableStations({ pickStation }) {
                 station={station(stat, currentLine)}
                 key={uuidv4()}
                 pick={() => {
-                  processPick(stat);
+                processPick(stat);
                 }}
               />
             );
