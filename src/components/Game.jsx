@@ -21,7 +21,7 @@ function Game() {
     if (pickedStations.length === 0) return true; // first station
     const nextIndex = nextStationIndex();
     const pickIndex = stationIndex(station, currentLine);
-    if (allowUserIntendedStartingDirection(pickIndex)) {
+    if (goingBackwards === null && allowUserIntendedStartingDirection(pickIndex)) {
       return true;
     }
     if (nextIndex === pickIndex) return true;
@@ -64,20 +64,24 @@ function Game() {
     const diff = startingStationIndex - pickedStationIndex;
     if (diff === 1){
       prependToPickedStations(station)
+      goBackwards(true)
       return 
     } else if (diff === -1){
       appendToPickedStations(station)
+      goBackwards(false)
       return
     } else if (diff < -1){
       const timeToLoop = loopBackwards(startingStationIndex, currentLine)
       if (pickedStationIndex === timeToLoop) {
         prependToPickedStations(station)
+        goBackwards(true)
         return
       }
     } else if (diff > 1){
       const timeToLoop = loopForwards(startingStationIndex, currentLine)
       if (pickedStationIndex === timeToLoop) {
       appendToPickedStations(station)
+      goBackwards(false)
     }
   };
 }
