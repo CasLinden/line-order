@@ -21,11 +21,11 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
 
  
   const handleLineSelection = async (city, group, line) => {
-    const data = await import(`/src/lines/${city}/${group}/${line}.js`);
+    const data = await import(`../../lines/${city}/${group}/${line}.js`);
+    console.log(data)
     const lineData = data.default;
     clearStationSearchInput();
     setCurrentLine(lineData);
-    console.log(lineData);
   };
 
   const handleGroupSelection = (group) => {

@@ -3,7 +3,7 @@ import yamanote from "/src/lines/tokyo/jr/Yamanote Line";
 
 export const CurrentLineContext = createContext();
 
-export const CurrentLineProvider = (props) => {
+export const CurrentLineProvider = ({children}) => {
   const [currentLine, setCurrentLine] = useState(yamanote);
 
   const useLineColor = () => {
@@ -21,7 +21,7 @@ export const CurrentLineProvider = (props) => {
         setCurrentLine,
       }}
     >
-      {props.children}
+      {children}
     </CurrentLineContext.Provider>
   );
 };
