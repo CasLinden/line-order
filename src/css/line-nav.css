@@ -7,7 +7,7 @@
   max-width: 100%;
   height: 100%;
   display: flex;
-  gap: 1rem;
+  gap: clamp(1px, 1vw, 1rem);
   justify-content: flex-end;
   align-items: center;
 }
@@ -41,8 +41,7 @@
 }
 
 @media (max-width: 499px) {
-  .overflow-hidden {
-    max-width: 100px;
+  .line-nav-overflow-hidden {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

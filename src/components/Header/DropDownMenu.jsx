@@ -68,6 +68,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
         href="#"
         className="menu-item"
         onClick={() => handleLineSelection(currentCity, currentGroup, value)}
+        onTouchStart={() => handleLineSelection(currentCity, currentGroup, value)}
       >
         {children}
       </a>

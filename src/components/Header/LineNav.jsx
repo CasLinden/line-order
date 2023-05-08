@@ -24,7 +24,7 @@ export function LineNav() {
     return (
       <li className="nav-item">
         <div className="nav-clickable-wrapper" onClick={() => setOpen(!open)}>
-          <a className="overflow-hidden" href="#">{text}</a>
+          <a className="line-nav-overflow-hidden" href="#">{text}</a>
           {icon && <img className="caret" src={icon} alt="" />}
         </div>
         {open && children}

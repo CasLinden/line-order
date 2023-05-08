@@ -10,6 +10,7 @@
   overflow: hidden;
   transition: height var(--speed) ease;
   box-sizing: content-box;
+  z-index: 2;
 }
 
 .icon-button {
