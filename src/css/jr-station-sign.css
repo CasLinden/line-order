@@ -23,6 +23,7 @@
 }
 
 .main-station-title {
+  color: #242424;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -33,6 +34,7 @@
 }
 
 .hiragana {
+  color: #242424;
   display: flex;
   font-weight: 900;
   justify-content: center;
