@@ -8,13 +8,13 @@ function JRStationSign({ station, pick }) {
       <div className="top-section">
         <div className="icon-container"></div>
         <div className="station-name">
-          <div className="main-station-title">
+          <div className="main-station-title japanese">
             {typeof station.JP === "string" &&
               station.JP.split("").map((kanji) => {
                 return <div key={uuidv4()}>{kanji}</div>;
               })}
           </div>
-          <div className="hiragana">{station.HR}</div>
+          <div className="hiragana japanese">{station.HR}</div>
         </div>
         <div className="right-of-station-title">
           <div className="translations">
