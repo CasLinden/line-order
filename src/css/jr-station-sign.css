@@ -56,9 +56,9 @@
   grid-template-rows: auto auto 1fr;
 }
 
-.korean {
+/* .korean {
   line-height: 0.7;
-}
+} */
 
 .boxes {
   display: grid;
