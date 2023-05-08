@@ -1,13 +1,13 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef} from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
-import JRStyleIcon from "./JRStyleIcon";
-import IconHolder from "./IconHolder";
+import StationIconSwitcher from "./StationIcons/StationIconSwitcher";
+import IconHolder from "./StationIcons/IconHolder";
 import station from "/src/utils/station";
 import { v4 as uuidv4 } from "uuid";
 import arrows from "/src/assets/arrows.svg";
 import "/src/css/picked-stations.css";
 
-function PickedStations({ pickedStations, goBackwards, setGoingBackwards }) {
+function PickedStations({ pickedStations, goBackwards}) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const backwardsRef = useRef(null);
   const forwardsRef = useRef(null);
@@ -17,7 +17,7 @@ function PickedStations({ pickedStations, goBackwards, setGoingBackwards }) {
     <>
       {pickedStations && pickedStations.length === 0 ? (
         <div className="picked-stations-placeholder">
-          <span>Pick a station to depart from</span>
+          <span>Choose place of departure</span>
           <span>出発駅を選択してください</span>
         </div>
       ) : (
@@ -32,7 +32,7 @@ function PickedStations({ pickedStations, goBackwards, setGoingBackwards }) {
             let abr = currentLine.main[stat];
             return (
               <IconHolder key={uuidv4()} stationTitle={currentStat.JP}>
-                <JRStyleIcon num={currentStat.num} abr={abr ? abr : null} />
+                <StationIconSwitcher num={currentStat.num} abr={abr ? abr : null} group={currentLine.group}/>
               </IconHolder>
             );
           })}

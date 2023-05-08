@@ -45,6 +45,10 @@
 
 .icon-holder{
   display: grid;
-  grid-template-rows: 60px 1.5rem;
-  max-height: calc(60px + 1.5rem);
+  grid-template-rows: 60px 2rem;
+  max-height: calc(60px + 2rem);
+}
+
+.picked-station-icon{
+  justify-self: center;
 }

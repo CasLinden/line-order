@@ -1,6 +1,6 @@
-import "/src/css/jr-style-icon.css";
+import "/src/css/station-icons/jr-icon.css";
 
-function JRStyleIcon({ num, abr }) {
+function JRIcon({ num, abr }) {
         return (
             <div className="picked-station-icon">
                 <div className="main-station" style={{ background: abr ? 'black' : 'none' }}>
@@ -14,4 +14,4 @@ function JRStyleIcon({ num, abr }) {
         )
 }
 
-export default JRStyleIcon;
+export default JRIcon;

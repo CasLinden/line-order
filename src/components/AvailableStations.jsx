@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
-import JRStationSign from "./JRStationSign";
+import StationSignSwitcher from "./StationSigns/StationSignSwitcher";
 import station from "/src/utils/station";
 import shuffleArray from "/src/utils/fisherYates";
 import { v4 as uuidv4 } from "uuid";
@@ -48,16 +48,17 @@ function AvailableStations({ pickStation }) {
       />
       <div className="available-stations-signs">
         {filteredUnPickedStations.map((stat) => {
-            return (
-              <JRStationSign
-                station={station(stat, currentLine)}
-                key={uuidv4()}
-                pick={() => {
+          return (
+            <StationSignSwitcher
+              station={station(stat, currentLine)}
+              key={uuidv4()}
+              pick={() => {
                 processPick(stat);
-                }}
-              />
-            );
-          })}
+              }}
+              group={currentLine.group}
+            />
+          );
+        })}
       </div>
     </div>
   );

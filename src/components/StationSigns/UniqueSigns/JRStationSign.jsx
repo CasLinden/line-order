@@ -1,10 +1,10 @@
-import "/src/css/jr-station-sign.css";
+import "/src/css/station-signs/jr-station-sign.css";
 import { v4 as uuidv4 } from "uuid";
 
 function JRStationSign({ station, pick }) {
 
   return (
-    <div className="sign" onClick={() => pick()}>
+    <div className="jr-sign sign" onClick={() => pick()}>
       <div className="top-section">
         <div className="icon-container"></div>
         <div className="station-name">
