@@ -21,6 +21,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
  
   const handleLineSelection = async (city, group, line) => {
     const data = await import(`../../lines/${city}/${group}/${line}.js`);
+    console.log(data.default)
     const lineData = data.default;
     clearStationSearchInput();
     setCurrentLine(lineData);
@@ -34,6 +35,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
 
   const handleCitySelection = (city) => {
     setCurrentCity(city);
+    setCurrentGroup(getGroupsForCity(city)[0]);
     setActiveMenu("group-from-right");
   };
 
@@ -115,7 +117,9 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
           <DropDownHeader goToMenu="group-from-left" leftIcon={arrowLeft}>
             Change Group {`(${currentGroup})`}
           </DropDownHeader>
-          {getLinesForGroup(currentLine.city, currentLine.group).map((line) => {
+          {console.log(currentGroup)}
+          {console.log(currentCity)}
+          {getLinesForGroup(currentCity, currentGroup).map((line) => {
             return (
               <DropDownItemLine key={uuidv4()} value={line}>
                 {line}
@@ -140,7 +144,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
       >
         <div className="menu">
           <DropDownHeader goToMenu="city" leftIcon={arrowLeft}>Change City</DropDownHeader>
-          {getGroupsForCity(currentLine.city).map((group) => {
+          {getGroupsForCity(currentCity).map((group) => {
             return (
               <DropDownItemGroup key={uuidv4()} value={group}>{group}</DropDownItemGroup>
             );
@@ -162,7 +166,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
       >
         <div className="menu">
           <DropDownHeader goToMenu="city" leftIcon={arrowLeft}>Change City</DropDownHeader>
-          {getGroupsForCity(currentLine.city).map((group) => {
+          { getGroupsForCity(currentCity).map((group) => {
             return (
               <DropDownItemGroup key={uuidv4()} value={group}>{group}</DropDownItemGroup>
             );

@@ -40,20 +40,11 @@
 }
 
 .backwards-arrows {
-  transform: rotate(180deg);
+  transform: rotate(180deg) translateX(-10px);
 }
 
 .inactive-arrow-container {
   filter: brightness(40%) grayscale(100%);
-}
-
-.nowrap {
-  display: inline-block;
-  white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-  align-self: center;
-  justify-self: center;
 }
 
 .icon-holder {
@@ -66,12 +57,22 @@
   justify-items: center;
 }
 
-.picked-station-icon {
-  justify-self: center;
+.station-icon-title {
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
-.station-icon-title{
-  font-size: clamp(0.8rem, 1.5vw, .9rem);
+.station-icon-title {
+  display: inline-block;
+  align-self: center;
+  justify-self: center;
+  line-height: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60px;
+}
+
+.picked-station-icon {
+  justify-self: center;
 }
 
 .icon-holder::after {
@@ -92,4 +93,5 @@
   background-color: var(--currentline-color);
   position: absolute;
   transform: translateY(37px);
+  z-index: 2;
 }

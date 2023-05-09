@@ -31,7 +31,7 @@ function PickedStations({ pickedStations, goBackwards}) {
             let currentStat = station(stat, currentLine);
             let abr = currentLine.main[stat];
             return (
-              <IconHolder key={uuidv4()} stationTitle={currentStat.JP}>
+              <IconHolder key={uuidv4()} stationTitle={currentStat.JP ? currentStat.JP : currentStat.EN}>
                 <StationIconSwitcher num={currentStat.num} abr={abr ? abr : null} group={currentLine.group}/>
               </IconHolder>
             );

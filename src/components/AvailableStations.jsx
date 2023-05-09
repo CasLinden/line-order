@@ -26,10 +26,11 @@ function AvailableStations({ pickStation }) {
   };
 
   const filteredUnPickedStations = unPickedStations.filter((stat) => {
+    const stationObj = station(stat, currentLine);
     return (
       stat.toLowerCase().includes(query.toLocaleLowerCase()) ||
-      station(stat, currentLine).JP.includes(query) ||
-      station(stat, currentLine).HR.includes(query)
+      stationObj?.JP?.includes(query) ||
+      stationObj?.HR?.includes(query)
     );
   });
 
