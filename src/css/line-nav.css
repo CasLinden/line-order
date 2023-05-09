@@ -40,6 +40,10 @@
   width: 15px;
 }
 
+.flipped {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 499px) {
   .line-nav-overflow-hidden {
     white-space: nowrap;

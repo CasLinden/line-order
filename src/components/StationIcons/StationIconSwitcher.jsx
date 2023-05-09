@@ -9,6 +9,10 @@ function StationIconSwitcher({ num, abr, group }) {
       case "JR":
         return <JRIcon num={num} abr={abr}/>;
       default:
+        document.documentElement.style.setProperty(
+          "--currentline-color",
+          `${'#FFFFFF'}`
+        );
         return <DefaultStationIcon/>;
     }
   }

@@ -18,7 +18,6 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
     const height = el.offsetHeight;
     setMenuHeight(height);
   }
-
  
   const handleLineSelection = async (city, group, line) => {
     const data = await import(`../../lines/${city}/${group}/${line}.js`);
@@ -104,7 +103,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
         in={activeMenu === "line"}
         unmountOnExit
         timeout={500}
-        onEnter={calcHeight}
+        onEnter={calcHeight} 
         classNames={{
           enter: 'enter-from-right',
           enterActive: 'enter-from-right-active',
