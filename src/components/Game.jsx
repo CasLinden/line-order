@@ -7,6 +7,7 @@ import PickedStations from "/src/components/PickedStations";
 import AvailableStations from "/src/components/AvailableStations";
 import toggleDirectionArrowsCss from "../utils/toggleDirectionArrowsCss";
 import clearStationSearchInput from "/src/utils/clearStationSearchInput";
+import { railClatter } from "/src/utils/railClatter";
 
 function Game() {
   const { currentLine } = useContext(CurrentLineContext);
@@ -33,6 +34,7 @@ function Game() {
       updatePickedStations(station);
       removeStation(station);
       clearStationSearchInput();
+      railClatter.play();
     } else {
       // logic for life-loss or something goes here
     }
