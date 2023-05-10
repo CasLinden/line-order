@@ -1,9 +1,11 @@
 export const linesCatalog = {
   Tokyo: {
     JR: ["Yamanote Line", "Chuo Line"],
+    Tokyu: ["Ikegami Line"],
   },
   Heerlen: {
     Arriva: ["Heuvellandlijn"],
+    NS: ["Noa Zitterd"],
   },
 };
 

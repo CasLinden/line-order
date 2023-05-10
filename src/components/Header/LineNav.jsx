@@ -21,16 +21,19 @@ export function LineNav() {
   function NavItem({ children, text, icon }) {
     const [open, setOpen] = useState(false);
 
-    const toggleDropDown = () => {
-      const caret = document.querySelector(".caret")
-      caret.classList.toggle('flipped')
+    const openDropDown = () => {
       setOpen(!open);
-    }
+      if (children) {
+       document.querySelector(".caret").classList.toggle("flipped");
+      }
+    };
 
     return (
       <li className="nav-item">
-        <div className="nav-clickable-wrapper" onClick={toggleDropDown}>
-          <a className="line-nav-overflow-hidden" href="#">{text}</a>
+        <div className="nav-clickable-wrapper" onClick={openDropDown}>
+          <a className="line-nav-overflow-hidden" href="#">
+            {text}
+          </a>
           {icon && <img className="caret" src={icon} alt="" />}
         </div>
         {open && children}
