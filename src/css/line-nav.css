@@ -1,6 +1,7 @@
 .navbar {
   height: 100%;
   padding: 0 5px;
+  justify-self: end;
 }
 
 .navbar-nav {
@@ -8,11 +9,8 @@
   height: 100%;
   display: flex;
   gap: clamp(1px, 1vw, 1rem);
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-items: center;
-}
-
-.nav-item {
   position: relative;
 }
 
@@ -40,15 +38,12 @@
   width: 15px;
 }
 
+.nav-clickable-wrapper.active{
+  text-decoration: underline #79B5B5;
+}
+
 .flipped {
   transform: rotate(180deg);
 }
 
-@media (max-width: 499px) {
-  .line-nav-overflow-hidden {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
 

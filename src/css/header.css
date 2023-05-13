@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 .header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 50px;
     align-items: center;
     background-color:  #1e1e1e;
     color: rgba(255, 255, 255, 0.87);
-    height: 50px;
-    padding: 1rem 0rem 1rem 1rem;
-    flex: 1;
     border-bottom: var(--border);
     width: 100%;
+  }
+  
+  .title-section{
+    display: flex;
+    align-items: center;
   }
 
   .header-train-image{
@@ -21,12 +24,9 @@
     font-family: 'Montserrat', sans-serif;
     max-height: 50px;
     display: flex;
+    padding: 0rem 0rem 0rem .5rem;
     justify-content: center;
     align-items: center;
-  }
-
-
-  .site-title .legend{
     text-decoration: underline #79B5B5;
   }
 
@@ -35,16 +35,25 @@
     font-weight: 700;
   }
 
-
-  .header-left{
-    display: flex;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 620px) {
+  /* @media screen and (max-width: 620px) {
     .header-train-image{
       width: 0px;
       height: 0px;
+    }
+  } */
+
+  @media screen and (max-width: 620px) {
+    .header{
+      grid-template-columns: 1fr;
+      grid-template-rows: 40px 35px;
+    }
+    .navbar{
+      justify-self: start;
+      align-self: center;
+    }
+    .dropdown{
+      left: -5px;
+      top: 34px;
     }
   }
     

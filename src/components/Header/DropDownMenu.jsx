@@ -1,59 +1,61 @@
 import { CSSTransition } from "react-transition-group";
 import { useContext, useState } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
-import { linesCatalog, getCities, getGroupsForCity, getLinesForGroup,} from "/src/lines/linesCatalog.js";
+import {
+  getCities,
+  getGroupsForCity,
+  getLinesForGroup,
+} from "/src/lines/linesCatalog.js";
 import { v4 as uuidv4 } from "uuid";
 import "/src/css/drop-down-menu.css";
 import clearStationSearchInput from "/src/utils/clearStationSearchInput";
 import arrowRight from "/src/assets/arrow-right.svg";
 import arrowLeft from "/src/assets/arrow-left.svg";
 
-export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup, setCurrentGroup}) {
+export default function DropDownMenu({ activeMenu, setActiveMenu, toggleDropDown }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
-  const [activeMenu, setActiveMenu] = useState("line");
+  const { currentGroup, setCurrentGroup } = useContext(CurrentLineContext);
+  const { currentCity, setCurrentCity } = useContext(CurrentLineContext);
   const [menuHeight, setMenuHeight] = useState(null);
-
 
   const calcHeight = (el) => {
     const height = el.offsetHeight;
     setMenuHeight(height);
-  }
- 
+  };
+
   const handleLineSelection = async (city, group, line) => {
     const data = await import(`../../lines/${city}/${group}/${line}.js`);
     const lineData = data.default;
     clearStationSearchInput();
     setCurrentLine(lineData);
+    toggleDropDown("line")
   };
 
   const handleGroupSelection = (group) => {
-    setCurrentGroup(group);
     setActiveMenu("line");
-    forceMenuExitToLeft()
+    forceMenuExitToLeft();
+    setCurrentGroup(group);
   };
 
   const handleCitySelection = (city) => {
-    setCurrentCity(city);
-    setCurrentGroup(getGroupsForCity(city)[0]);
     setActiveMenu("group-from-right");
+    setCurrentGroup(getGroupsForCity(city)[0]);
+    setCurrentCity(city);
   };
 
   const forceMenuExitToLeft = () => {
     document.querySelector(".menu").classList.toggle("force-left-exit");
-  }
+  };
 
   function DropDownHeader(props) {
     return (
-      <div className="menu-item"
-      onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
+      <div
+        className="menu-item"
+        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
       >
         {props.leftIcon && <img className="icon-button" src={props.leftIcon} />}
-        
-        <a
-          href="#"
-        >
-          {props.children}
-        </a>
+
+        <a href="#">{props.children}</a>
         {props.rightIcon && (
           <img className="icon-right" src={props.rightIcon} />
         )}
@@ -67,7 +69,9 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
         href="#"
         className="menu-item"
         onClick={() => handleLineSelection(currentCity, currentGroup, value)}
-        onTouchStart={() => handleLineSelection(currentCity, currentGroup, value)}
+        onTouchStart={() =>
+          handleLineSelection(currentCity, currentGroup, value)
+        }
       >
         {children}
       </a>
@@ -76,11 +80,7 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
 
   function DropDownItemGroup({ value }) {
     return (
-      <div
-    
-        className="menu-item"
-        onClick={() => handleGroupSelection(value)}
-      >
+      <div className="menu-item" onClick={() => handleGroupSelection(value)}>
         {value}
       </div>
     );
@@ -88,28 +88,24 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
 
   function DropDownItemCity({ value }) {
     return (
-      <div
-       
-        className="menu-item"
-        onClick={() => handleCitySelection(value)}
-      >
-       {value}
+      <div className="menu-item" onClick={() => handleCitySelection(value)}>
+        {value}
       </div>
     );
   }
 
   return (
-    <div className="dropdown" style={{ height: menuHeight}}>
+    <div className="dropdown" style={{ height: menuHeight }}>
       <CSSTransition
         in={activeMenu === "line"}
         unmountOnExit
         timeout={500}
-        onEnter={calcHeight} 
+        onEnter={calcHeight}
         classNames={{
-          enter: 'enter-from-right',
-          enterActive: 'enter-from-right-active',
-          exit: 'exit-to-right',
-          exitActive: 'exit-to-right-active',
+          enter: "enter-from-right",
+          enterActive: "enter-from-right-active",
+          exit: "exit-to-right",
+          exitActive: "exit-to-right-active",
         }}
       >
         <div className="menu">
@@ -132,18 +128,21 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
         timeout={500}
         onEnter={calcHeight}
         classNames={{
-          enter: 'enter-from-right',
-          enterActive: 'enter-from-right-active',
-          exit: 'exit-to-left',
-          exitActive: 'exit-to-left-active',
-          
+          enter: "enter-from-right",
+          enterActive: "enter-from-right-active",
+          exit: "exit-to-left",
+          exitActive: "exit-to-left-active",
         }}
       >
         <div className="menu">
-          <DropDownHeader goToMenu="city" leftIcon={arrowLeft}>Change City</DropDownHeader>
+          <DropDownHeader goToMenu="city" leftIcon={arrowLeft}>
+            Change City
+          </DropDownHeader>
           {getGroupsForCity(currentCity).map((group) => {
             return (
-              <DropDownItemGroup key={uuidv4()} value={group}>{group}</DropDownItemGroup>
+              <DropDownItemGroup key={uuidv4()} value={group}>
+                {group}
+              </DropDownItemGroup>
             );
           })}
         </div>
@@ -155,17 +154,21 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
         timeout={500}
         onEnter={calcHeight}
         classNames={{
-          enter: 'enter-from-left',
-          enterActive: 'enter-from-left-active',
-          exit: 'exit-to-right',
-          exitActive: 'exit-to-right-active',
+          enter: "enter-from-left",
+          enterActive: "enter-from-left-active",
+          exit: "exit-to-right",
+          exitActive: "exit-to-right-active",
         }}
       >
         <div className="menu">
-          <DropDownHeader goToMenu="city" leftIcon={arrowLeft}>Change City</DropDownHeader>
-          { getGroupsForCity(currentCity).map((group) => {
+          <DropDownHeader goToMenu="city" leftIcon={arrowLeft}>
+            Change City
+          </DropDownHeader>
+          {getGroupsForCity(currentCity).map((group) => {
             return (
-              <DropDownItemGroup key={uuidv4()} value={group}>{group}</DropDownItemGroup>
+              <DropDownItemGroup key={uuidv4()} value={group}>
+                {group}
+              </DropDownItemGroup>
             );
           })}
         </div>
@@ -177,15 +180,19 @@ export default function DropDownMenu({ currentCity, setCurrentCity, currentGroup
         timeout={500}
         onEnter={calcHeight}
         classNames={{
-          enter: 'enter-from-left',
-          enterActive: 'enter-from-left-active',
-          exit: 'exit-to-left',
-          exitActive: 'exit-to-left-active',
+          enter: "enter-from-left",
+          enterActive: "enter-from-left-active",
+          exit: "exit-to-left",
+          exitActive: "exit-to-left-active",
         }}
       >
         <div className="menu">
           {getCities().map((city) => {
-            return <DropDownItemCity key={uuidv4()} value={city}>{city}</DropDownItemCity>;
+            return (
+              <DropDownItemCity key={uuidv4()} value={city}>
+                {city}
+              </DropDownItemCity>
+            );
           })}
         </div>
       </CSSTransition>

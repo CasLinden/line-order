@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import DropDownMenu from "/src/components/Header/DropDownMenu";
 import caret from "/src/assets/caret.svg";
@@ -6,9 +6,21 @@ import caret from "/src/assets/caret.svg";
 import "/src/css/line-nav.css";
 
 export function LineNav() {
+  const { currentCity, setCurrentCity } = useContext(CurrentLineContext);
+  const { currentGroup, setCurrentGroup } = useContext(CurrentLineContext);
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
-  const [currentCity, setCurrentCity] = useState(currentLine.city);
-  const [currentGroup, setCurrentGroup] = useState(currentLine.group);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const toggleDropDown = (val) => {
+    if (activeMenu === val) {
+      setActiveMenu(null);
+      setOpen(false);
+    } else {
+      setActiveMenu(val);
+      setOpen(true);
+    }
+  };
 
   function Navbar({ children }) {
     return (
@@ -18,41 +30,38 @@ export function LineNav() {
     );
   }
 
-  function NavItem({ children, text, icon }) {
-    const [open, setOpen] = useState(false);
-
-    const openDropDown = () => {
-      setOpen(!open);
-      if (children) {
-       document.querySelector(".caret").classList.toggle("flipped");
-      }
-    };
-
+  function NavItem({ text, cat }) {
     return (
-      <li className="nav-item">
-        <div className="nav-clickable-wrapper" onClick={openDropDown}>
-          <a className="line-nav-overflow-hidden" href="#">
+      <li className={`nav-item`}>
+        <div
+          className={`nav-clickable-wrapper ${
+            activeMenu === cat ? " active " : ""
+          }`}
+          onClick={() => toggleDropDown(cat)}
+        >
+          <a href="#" className="line-nav-overflow-hidden">
             {text}
           </a>
-          {icon && <img className="caret" src={icon} alt="" />}
+          <img
+            className={`caret${
+              activeMenu === cat ? " flipped" : ""
+            }`}
+            src={caret}
+            alt=""
+          />
         </div>
-        {open && children}
       </li>
     );
   }
 
   return (
     <Navbar>
-      <NavItem text={currentCity}></NavItem>
-      <NavItem text={currentGroup}></NavItem>
-      <NavItem text={currentLine.title} icon={caret}>
-        <DropDownMenu
-          currentCity={currentCity}
-          setCurrentCity={setCurrentCity}
-          currentGroup={currentGroup}
-          setCurrentGroup={setCurrentGroup}
-        ></DropDownMenu>
-      </NavItem>
+      <NavItem text={currentCity} cat="city"></NavItem>
+      <NavItem text={currentGroup} cat="group-from-left"></NavItem>
+      <NavItem text={currentLine.title} icon={caret} cat="line"></NavItem>
+      {open && (
+        <DropDownMenu activeMenu={activeMenu} setActiveMenu={setActiveMenu} toggleDropDown={toggleDropDown} />
+      )}
     </Navbar>
   );
 }

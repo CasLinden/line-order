@@ -3,7 +3,9 @@ import yamanote from "/src/lines/tokyo/jr/Yamanote Line";
 
 export const CurrentLineContext = createContext();
 
-export const CurrentLineProvider = ({children}) => {
+export const CurrentLineProvider = ({ children }) => {
+  const [currentCity, setCurrentCity] = useState("Tokyo");
+  const [currentGroup, setCurrentGroup] = useState("JR");
   const [currentLine, setCurrentLine] = useState(yamanote);
 
   const useLineColor = () => {
@@ -17,6 +19,10 @@ export const CurrentLineProvider = ({children}) => {
   return (
     <CurrentLineContext.Provider
       value={{
+        currentCity,
+        setCurrentCity,
+        currentGroup,
+        setCurrentGroup,
         currentLine,
         setCurrentLine,
       }}

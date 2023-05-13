@@ -5,11 +5,11 @@ import "/src/css/header.css";
 export default function Header() {
   return (
     <header className="header">
-      <div className="header-left">
+      <div className="title-section">
         <img className="header-train-image" src={train} alt="" />
         <div className="site-title">
           <div className="line">Line</div>
-          <div className="legend">Legend</div>
+          <div>Order</div>
         </div>
       </div>
       <LineNav></LineNav>
