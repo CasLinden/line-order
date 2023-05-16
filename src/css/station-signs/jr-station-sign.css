@@ -10,7 +10,6 @@
 
 
 .jr-sign .top-section {
-  
   display: grid;
   grid-template-columns: 1.5fr 1fr 1.5fr;
   padding-top: clamp(5px, 1vw, 10px);
