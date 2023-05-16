@@ -56,3 +56,12 @@ a {
   color: var(--text-color);
   text-decoration: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
