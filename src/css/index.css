@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+body{
+  height: 100%;
+  max-height: 100vh;
+}
+
 :root {
   font-family: Arial, sans-serif;
   line-height: 1.5;
@@ -23,6 +28,7 @@
   --bg-accent: #1e1e1e;
   --bg-accent-light:rgb(59, 59, 59) ;
   --text-color: rgba(255, 255, 255, 0.87);
+  --window-color:  #79B5B5;
   --nav-size: 50px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;
@@ -30,6 +36,7 @@
 
   color: var(--text-color);
   background-color: var(--bg);
+  max-height: 100vh;
 }
 
 .japanese{
@@ -45,4 +52,8 @@ ul {
 a {
   color: var(--text-color);
   text-decoration: none;
+}
+
+.App {
+  display: grid;
 }

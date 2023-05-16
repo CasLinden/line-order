@@ -2,11 +2,11 @@ function toggleDirectionArrowsCss(goingBackwards) {
   const forwardsArrows = document.querySelector(".forwards-arrows");
   const backwardsArrows = document.querySelector(".backwards-arrows");
   if (goingBackwards === true) {
-    forwardsArrows.classList.add("inactive-arrow-container");
-    backwardsArrows.classList.remove("inactive-arrow-container");
+    forwardsArrows.classList.add("inactive-arrows");
+    backwardsArrows.classList.remove("inactive-arrows");
   } else {
-    backwardsArrows.classList.add("inactive-arrow-container");
-    forwardsArrows.classList.remove("inactive-arrow-container");
+    backwardsArrows.classList.add("inactive-arrows");
+    forwardsArrows.classList.remove("inactive-arrows");
   }
 }
 

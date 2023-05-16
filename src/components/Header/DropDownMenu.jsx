@@ -97,6 +97,7 @@ export default function DropDownMenu({ activeMenu, setActiveMenu, toggleDropDown
   return (
     <div className="dropdown" style={{ height: menuHeight }}>
       <CSSTransition
+        key={uuidv4()}
         in={activeMenu === "line"}
         unmountOnExit
         timeout={500}
@@ -123,6 +124,7 @@ export default function DropDownMenu({ activeMenu, setActiveMenu, toggleDropDown
       </CSSTransition>
 
       <CSSTransition
+        key={uuidv4()}
         in={activeMenu === "group-from-right"}
         unmountOnExit
         timeout={500}
@@ -149,6 +151,7 @@ export default function DropDownMenu({ activeMenu, setActiveMenu, toggleDropDown
       </CSSTransition>
 
       <CSSTransition
+      key={uuidv4()}
         in={activeMenu === "group-from-left"}
         unmountOnExit
         timeout={500}
@@ -175,6 +178,7 @@ export default function DropDownMenu({ activeMenu, setActiveMenu, toggleDropDown
       </CSSTransition>
 
       <CSSTransition
+      key={uuidv4()}
         in={activeMenu === "city"}
         unmountOnExit
         timeout={500}

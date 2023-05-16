@@ -2,6 +2,7 @@
   height: 100%;
   padding: 0 5px;
   justify-self: end;
+  position:relative
 }
 
 .navbar-nav {
@@ -9,7 +10,6 @@
   height: 100%;
   display: flex;
   gap: clamp(1px, 1vw, 1rem);
-  /* justify-content: flex-end; */
   align-items: center;
   position: relative;
 }

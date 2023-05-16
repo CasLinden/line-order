@@ -3,7 +3,7 @@ import { CurrentLineContext } from "/src/CurrentLineContext";
 import loopBackwards from "/src/utils/loopBackwards";
 import loopForwards from "/src/utils/loopForwards";
 import stationIndex from "/src/utils/stationIndex";
-import PickedStations from "/src/components/PickedStations";
+import PlayField from "/src/components/PlayField";
 import AvailableStations from "/src/components/AvailableStations";
 import toggleDirectionArrowsCss from "../utils/toggleDirectionArrowsCss";
 import clearStationSearchInput from "/src/utils/clearStationSearchInput";
@@ -139,7 +139,7 @@ function Game() {
 
   return (
     <>
-      <PickedStations
+      <PlayField
         pickedStations={pickedStations}
         goingBackwards={goingBackwards}
         goBackwards={goBackwards}

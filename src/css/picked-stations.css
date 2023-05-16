@@ -1,4 +1,4 @@
-.picked-stations-placeholder {
+.game-rules {
   width: 100%;
   height: 30vh;
   color: rgba(255, 255, 255, 0.87);
@@ -6,24 +6,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10%;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  padding: 10px;
+  gap: 10px;
+  text-align: center;
 }
 
 .picked-stations-container {
-  /* position: relative; */
   display: grid;
-  min-height: 30vh;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 60px));
-  padding: 10px;
+  height: 30vh;
+  grid-template-columns: repeat(auto-fit, 55px);
   align-items: center;
-  /* justify-items: center; */
   justify-content: center;
   box-sizing: content-box;
-}
-
-.picked-stations-container > * {
-  max-width: 60px;
+  max-width: 1000px;
 }
 
 .forwards-arrows,
@@ -31,11 +27,32 @@
   height: 84px;
   width: 48px;
   cursor: pointer;
+  position: relative;
 }
 
-.backwards-arrows-container,
-.forwards-arrows-container {
-  height: 92px;
+.forwards-arrows-container.instruction1 .instruction-text::after {
+  content: "or that way";
+  font-size: 0.8rem;
+  top: 12px;
+  left: 50px;
+  text-align: center;
+  border: dashed 2px var(--currentline-color);
+  padding: 0.5rem;
+  position: absolute;
+  font-weight: 700;
+  width: 60px;
+}
+
+.backwards-arrows-container.instruction1 .instruction-text::before {
+  content: "go this way";
+  font-size: 0.8rem;
+  top: 12px;
+  right: 40px;
+  text-align: center;
+  border: dashed 2px var(--currentline-color);
+  padding: 0.5rem;
+  position: absolute;
+  font-weight: 700;
   width: 60px;
 }
 
@@ -43,7 +60,7 @@
   transform: rotate(180deg) translateX(-10px);
 }
 
-.inactive-arrow-container {
+.inactive-arrows {
   filter: brightness(40%) grayscale(100%);
 }
 
@@ -94,4 +111,33 @@
   position: absolute;
   transform: translateY(37px);
   z-index: 2;
+}
+
+@media (max-width: 766px) {
+  .picked-stations-container {
+    height: 17vh;
+  }
+
+  .available-stations-signs{
+    max-height: 85vh;
+  }
+
+  .forwards-arrows,
+  .backwards-arrows {
+    width: 40px;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .ellipsis {
+    font-size: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--currentline-color);
+    letter-spacing: -3px;
+    margin-bottom: 44px;
+    margin-left: 2px;
+  }
 }

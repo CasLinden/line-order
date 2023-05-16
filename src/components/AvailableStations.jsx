@@ -35,31 +35,33 @@ function AvailableStations({ pickStation }) {
   });
 
   return (
-    <div className="available-stations">
-      <input
-        className="station-search"
-        placeholder={"Search..."}
-        onFocus={(e) => {
-          e.target.value = "";
-          setQuery("");
-        }}
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        type="search"
-      />
-      <div className="available-stations-signs">
-        {filteredUnPickedStations.map((stat) => {
-          return (
-            <StationSignSwitcher
-              station={station(stat, currentLine)}
-              key={uuidv4()}
-              pick={() => {
-                processPick(stat);
-              }}
-              group={currentLine.group}
-            />
-          );
-        })}
+    <div className="stations-scroll-window">
+      <div className="available-stations">
+        <input
+          className="station-search"
+          placeholder={"Search..."}
+          onFocus={(e) => {
+            e.target.value = "";
+            setQuery("");
+          }}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          type="search"
+        />
+        <div className="available-stations-signs">
+          {filteredUnPickedStations.map((stat) => {
+            return (
+              <StationSignSwitcher
+                station={station(stat, currentLine)}
+                key={uuidv4()}
+                pick={() => {
+                  processPick(stat);
+                }}
+                group={currentLine.group}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

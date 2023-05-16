@@ -35,20 +35,18 @@
     font-weight: 700;
   }
 
-  /* @media screen and (max-width: 620px) {
-    .header-train-image{
-      width: 0px;
-      height: 0px;
-    }
-  } */
-
+  @media screen and (max-width: 620px) {
+   .site-title{
+    visibility: hidden;
+   }
+  }
+  
   @media screen and (max-width: 620px) {
     .header{
-      grid-template-columns: 1fr;
-      grid-template-rows: 40px 35px;
+      grid-template-columns: 80px 1fr;
     }
     .navbar{
-      justify-self: start;
+      justify-self: end;
       align-self: center;
     }
     .dropdown{
@@ -56,7 +54,8 @@
       top: 34px;
     }
   }
-    
+  
+  
   
 
 
