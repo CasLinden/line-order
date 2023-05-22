@@ -12,6 +12,7 @@ function AvailableStations({ pickStation }) {
   const [unPickedStations, setUnPickedStations] = useState(
     shuffleArray(currentLine.EN.slice())
   );
+  const [animationTypes, setAnimationTypes] = useState(new Map());
 
   useEffect(() => {
     setUnPickedStations(shuffleArray(currentLine.EN.slice()));
@@ -54,18 +55,18 @@ function AvailableStations({ pickStation }) {
         </div>
         <div className="border-provider">
           <div className="available-stations-signs">
-            {filteredUnPickedStations.map((stat) => {
-              return (
-                <StationSignSwitcher
-                  station={station(stat, currentLine)}
-                  key={uuidv4()}
-                  pick={() => {
-                    processPick(stat);
-                  }}
-                  group={currentLine.group}
-                />
-              );
-            })}
+              {filteredUnPickedStations.map((stat) => {
+                return (
+                    <StationSignSwitcher
+                      station={station(stat, currentLine)}
+                      key={uuidv4()}
+                      pick={() => {
+                        processPick(stat);
+                      }}
+                      group={currentLine.group}
+                    />
+                );
+              })}
           </div>
         </div>
       </div>

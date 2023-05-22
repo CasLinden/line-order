@@ -6,9 +6,9 @@ const heuvel = {
     loop: false,
     color: "red",
     EN: [
-        "Beer's werk",
-        "Musti",
-        "Sjengeland Noord",
+        "Maastricht Randwyck",
+        "Maastricht",
+        "Maastricht Noord",
         "Meerssen",
         "Houthem-St. Gerlach",
         "Valkenburg",

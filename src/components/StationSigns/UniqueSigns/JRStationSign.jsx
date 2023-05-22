@@ -1,10 +1,11 @@
 import "/src/css/station-signs/jr-station-sign.css";
+import hyphenateString from "/src/utils/hyphenateString";
 import { v4 as uuidv4 } from "uuid";
 
-function JRStationSign({ station, pick }) {
+function JRStationSign({ station, pick, key }) {
 
   return (
-    <div className="jr-sign sign" onClick={() => pick()}>
+    <div className={`sign jr-sign ${hyphenateString(station.EN)}-sign`} onClick={() => pick()}>
       <div className="top-section">
         <div className="icon-container"></div>
         <div className="station-name">

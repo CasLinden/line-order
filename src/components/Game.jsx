@@ -5,24 +5,36 @@ import loopForwards from "/src/utils/loopForwards";
 import stationIndex from "/src/utils/stationIndex";
 import PlayField from "/src/components/PlayField";
 import AvailableStations from "/src/components/AvailableStations";
-import toggleDirectionArrowsCss from "../utils/toggleDirectionArrowsCss";
+import toggleDirectionArrowsCss from "/src/utils/toggleDirectionArrowsCss";
 import clearStationSearchInput from "/src/utils/clearStationSearchInput";
-import { railClatter } from "/src/utils/railClatter";
+import {
+  addClassForCorrectAnimation,
+  addClassForIncorrectAnimation,
+  removeClassForIncorrectAnimation,
+} from "/src/utils/pickAnimations";
+import { railClatterSound } from "/src/utils/railClatterSound";
 
 function Game() {
   const { currentLine } = useContext(CurrentLineContext);
   const [pickedStations, setPickedStations] = useState([]);
   const [goingBackwards, setGoingBackwards] = useState(null);
+  const [farLeft, setFarLeft] = useState(false);
+  const [farRight, setFarRight] = useState(false);
 
   useEffect(() => {
     setPickedStations([]);
+    setFarLeft(false);
+    setFarRight(false);
   }, [currentLine]);
 
   const isCorrect = (station) => {
     if (pickedStations.length === 0) return true; // first station
     const nextIndex = nextStationIndex();
     const pickIndex = stationIndex(station, currentLine);
-    if (goingBackwards === null && allowUserIntendedStartingDirection(pickIndex)) {
+    if (
+      goingBackwards === null &&
+      allowUserIntendedStartingDirection(pickIndex)
+    ) {
       return true;
     }
     if (nextIndex === pickIndex) return true;
@@ -31,27 +43,38 @@ function Game() {
 
   const pickStation = (station, removeStation) => {
     if (isCorrect(station)) {
-      updatePickedStations(station);
-      removeStation(station);
-      clearStationSearchInput();
-      railClatter.play();
+      addClassForCorrectAnimation(station);
+      railClatterSound.play();
+      setTimeout(() => {
+        passCorrectStation(station, removeStation);
+        endOfLine(station);
+      }, "400");
     } else {
-      // logic for life-loss or something goes here
+      addClassForIncorrectAnimation(station);
+      setTimeout(() => {
+        removeClassForIncorrectAnimation(station);
+      }, "400");
     }
+  };
+
+  const passCorrectStation = (station, removeStation) => {
+    updatePickedStations(station);
+    removeStation(station);
+    clearStationSearchInput();
   };
 
   const appendToPickedStations = (station) => {
     setPickedStations([...pickedStations, station]);
   };
-  
+
   const prependToPickedStations = (station) => {
     setPickedStations([station, ...pickedStations]);
   };
 
   const updatePickedStations = (station) => {
-    if(pickedStations.length === 1 && goingBackwards === null) {
-      updateWithUserIntendedDirection(station)
-      return
+    if (pickedStations.length === 1 && goingBackwards === null) {
+      updateWithUserIntendedDirection(station);
+      return;
     }
     if (!goingBackwards) {
       appendToPickedStations(station);
@@ -64,29 +87,29 @@ function Game() {
     const startingStationIndex = stationIndex(pickedStations[0], currentLine);
     const pickedStationIndex = stationIndex(station, currentLine);
     const diff = startingStationIndex - pickedStationIndex;
-    if (diff === 1){
-      prependToPickedStations(station)
-      goBackwards(true)
-      return 
-    } else if (diff === -1){
-      appendToPickedStations(station)
-      goBackwards(false)
-      return
-    } else if (diff < -1){
-      const timeToLoop = loopBackwards(startingStationIndex, currentLine)
+    if (diff === 1) {
+      prependToPickedStations(station);
+      goBackwards(true);
+      return;
+    } else if (diff === -1) {
+      appendToPickedStations(station);
+      goBackwards(false);
+      return;
+    } else if (diff < -1) {
+      const timeToLoop = loopBackwards(startingStationIndex, currentLine);
       if (pickedStationIndex === timeToLoop) {
-        prependToPickedStations(station)
-        goBackwards(true)
-        return
+        prependToPickedStations(station);
+        goBackwards(true);
+        return;
       }
-    } else if (diff > 1){
-      const timeToLoop = loopForwards(startingStationIndex, currentLine)
+    } else if (diff > 1) {
+      const timeToLoop = loopForwards(startingStationIndex, currentLine);
       if (pickedStationIndex === timeToLoop) {
-      appendToPickedStations(station)
-      goBackwards(false)
+        appendToPickedStations(station);
+        goBackwards(false);
+      }
     }
   };
-}
 
   const goBackwards = (booli) => {
     setGoingBackwards(booli);
@@ -137,12 +160,25 @@ function Game() {
     }
   };
 
+  const endOfLine = (station) => {
+    if (currentLine.loop) return;
+    if (station === currentLine.EN[0]) {
+      goBackwards(false);
+      setFarLeft(true);
+    } else if (station === currentLine.EN[currentLine.EN.length - 1]) {
+      goBackwards(true);
+      setFarRight(true);
+    }
+  };
+
   return (
     <>
       <PlayField
         pickedStations={pickedStations}
         goingBackwards={goingBackwards}
         goBackwards={goBackwards}
+        farLeft={farLeft}
+        farRight={farRight}
       />
       <AvailableStations pickStation={pickStation} />
     </>

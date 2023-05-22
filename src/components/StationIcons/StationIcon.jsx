@@ -14,6 +14,8 @@ function StationIcon({stat}) {
     <IconHolder
       key={uuidv4()}
       stationTitle={currentStat.JP ? currentStat.JP : currentStat.EN}
+      farLeftIcon={currentLine.loop === false && stat === currentLine.EN[0]? true : false}
+      farRightIcon={currentLine.loop === false && stat === currentLine.EN[currentLine.EN.length - 1]? true : false}
     >
       <StationIconSwitcher
         num={currentStat.num}

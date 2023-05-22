@@ -14,6 +14,7 @@
 
 .picked-stations-container {
   display: grid;
+  position: relative;
   height: 30vh;
   grid-template-columns: repeat(auto-fit, 55px);
   align-items: center;
@@ -111,6 +112,19 @@
   position: absolute;
   transform: translateY(37px);
   z-index: 2;
+}
+
+.far-left-icon::before{
+  visibility: hidden;
+}
+
+.far-right-icon::after{
+  visibility: hidden;
+}
+
+.line-darkener-left{
+  position: absolute;
+  right: 0px;
 }
 
 @media (max-width: 766px) {

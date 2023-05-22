@@ -1,5 +1,5 @@
 import JRStationSign from "./UniqueSigns/JRStationSign";
-import DefaultStationSign from "/src/components/StationSigns/DefaultStationSign";
+import DefaultStationSign from "/src/components/StationSigns/UniqueSigns/DefaultStationSign";
 
 function StationSignSwitcher({ station, group, pick }) {
   switch (group) {

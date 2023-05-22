@@ -3,7 +3,7 @@ import StationIconsContainer from "/src/components/StationIcons/StationIconsCont
 import arrows from "/src/assets/arrows.svg";
 import "/src/css/picked-stations.css";
 
-function PlayField({ pickedStations, goBackwards }) {
+function PlayField({ pickedStations, goBackwards, farLeft, farRight }) {
   const backwardsRef = useRef(null);
   const forwardsRef = useRef(null);
 
@@ -18,37 +18,40 @@ function PlayField({ pickedStations, goBackwards }) {
         </div>
       ) : (
         <div className="picked-stations-container">
-          <div
-            className={`backwards-arrows-container ${
-              pickedStations.length === 1 ? "instruction1" : ""
-            }`}
-            ref={backwardsRef}
-          >
-            <img
-              className={`backwards-arrows`}
-              onClick={() => {
-                goBackwards(true);
-              }}
-              src={arrows}
-            ></img>
-          </div>
+          {farLeft === false && (
+            <div
+              className={`backwards-arrows-container`}
+              ref={backwardsRef}
+            >
+              <img
+                className={`backwards-arrows`}
+                onClick={() => {
+                  goBackwards(true);
+                }}
+                src={arrows}
+              ></img>
+            </div>
+          )}
+          {/* {farLeft === true && <div className="line-darkener-left"> </div>} */}
 
           <StationIconsContainer pickedStations={pickedStations} />
 
-          <div
-            className={`forwards-arrows-container ${
-              pickedStations.length === 1 ? "instruction1" : ""
-            } `}
-            ref={forwardsRef}
-          >
-            <img
-              className={`forwards-arrows`}
-              onClick={() => {
-                goBackwards(false);
-              }}
-              src={arrows}
-            ></img>
-          </div>
+          {farRight === false && (
+            <div
+              className={`forwards-arrows-container`}
+              ref={forwardsRef}
+            >
+              <img
+                className={`forwards-arrows`}
+                onClick={() => {
+                  goBackwards(false);
+                }}
+                src={arrows}
+              ></img>
+            </div>
+          )}
+
+          {/* {farRight === true && <div className="line-darkener-right"> </div>} */}
         </div>
       )}
     </>

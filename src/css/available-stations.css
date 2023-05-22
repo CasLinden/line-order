@@ -6,6 +6,7 @@
   position: relative;
 }
 
+
 .fifty-fifty-bar {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -49,7 +50,7 @@
   width: 90%;
   margin-left: 15px;
   margin-right: 15px;
-  height: 25px;
+  height: 30px;
   border: none;
   padding-left: 10px;
   margin-bottom: 3px;
@@ -71,11 +72,6 @@
   overflow-y: scroll;
   width: 100%;
   border-radius: var(--border-radius);
-  /* background-color: var(--bg-accent);
-  border-top: var(--border);
-  border-right: var(--border);
-  border-radius: var(--border-radius);
-  padding: 8px; */
 }
 
 @media (min-width: 767px) {
@@ -90,3 +86,47 @@
     grid-template-columns: 1fr;
   }
 }
+
+.correct-pick-animation {
+  animation-name: correct-pick;
+  animation-duration: .5s;
+}
+
+@keyframes correct-pick {
+  0% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(0.05) translateY(0);
+  }
+  100% {
+    transform: scaleX(0.2) translateY(-100%);
+    z-index: 4;
+    opacity: 0;
+  }
+}
+
+.incorrect-pick-animation {
+  animation-name: incorrect-pick;
+  animation-duration: .5s;
+}
+
+@keyframes incorrect-pick {
+  0% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(0.05) translateY(0);
+  }
+  100% {
+    transform: scaleX(1) translateY(0);
+  }
+}
+
+
+
+
+
+

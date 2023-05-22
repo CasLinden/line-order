@@ -1,11 +1,9 @@
-import { useContext, useState, useEffect } from "react";
-import { CurrentLineContext } from "/src/CurrentLineContext";
+import { useState, useEffect } from "react";
 import StationIcon from "/src/components/StationIcons/StationIcon";
 import getMaxIcons from "/src/utils/getMaxIcons";
 import { v4 as uuidv4 } from "uuid";
 
 function StationIconsContainer({ pickedStations }) {
-  const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -26,7 +24,6 @@ function StationIconsContainer({ pickedStations }) {
   }, []);
 
   const maxIcons = getMaxIcons(isMobile);
-  console.log(maxIcons);
 
   const renderStationIcons = () => {
     if (!isMobile || pickedStations.length <= maxIcons) {
