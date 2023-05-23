@@ -1,7 +1,6 @@
 import hyphenateString from "./hyphenateString";
 
 function addClassForCorrectAnimation (station) {
-    console.log(`.${hyphenateString(station)}-sign`)
     let statElement = document.querySelector(`.${hyphenateString(station)}-sign`);
     statElement.classList.add('correct-pick-animation');
 }

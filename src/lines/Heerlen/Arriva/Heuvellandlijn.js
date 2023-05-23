@@ -10,7 +10,7 @@ const heuvel = {
         "Maastricht",
         "Maastricht Noord",
         "Meerssen",
-        "Houthem-St. Gerlach",
+        "Houthem-St.Gerlach",
         "Valkenburg",
         "Schin op Geul",
         "Klimmen-Ransdaal",

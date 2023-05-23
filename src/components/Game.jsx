@@ -23,6 +23,7 @@ function Game() {
 
   useEffect(() => {
     setPickedStations([]);
+    setGoingBackwards(null);
     setFarLeft(false);
     setFarRight(false);
   }, [currentLine]);
