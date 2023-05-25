@@ -1,18 +1,20 @@
 import { useState, useContext, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
+import Playfield from "/src/components/Playfield";
+import AvailableStations from "/src/components/AvailableStations";
+import GameStatusHUD from "/src/components/GameStatusHUD";
 import loopBackwards from "/src/utils/loopBackwards";
 import loopForwards from "/src/utils/loopForwards";
 import stationIndex from "/src/utils/stationIndex";
-import PlayField from "/src/components/PlayField";
-import AvailableStations from "/src/components/AvailableStations";
 import toggleDirectionArrowsCss from "/src/utils/toggleDirectionArrowsCss";
 import clearStationSearchInput from "/src/utils/clearStationSearchInput";
+import railClatterSound from "/src/utils/railClatterSound";
+import autoClickStationSign from "../utils/autoclickStationSign";
 import {
   addClassForCorrectAnimation,
   addClassForIncorrectAnimation,
   removeClassForIncorrectAnimation,
 } from "/src/utils/pickAnimations";
-import { railClatterSound } from "/src/utils/railClatterSound";
 
 function Game() {
   const { currentLine } = useContext(CurrentLineContext);
@@ -20,13 +22,19 @@ function Game() {
   const [goingBackwards, setGoingBackwards] = useState(null);
   const [farLeft, setFarLeft] = useState(false);
   const [farRight, setFarRight] = useState(false);
+  const [earnedTicketParts, setEarnedTicketParts] = useState(0); // 3 parts = 1 ticket
 
   useEffect(() => {
+    reset();
+  }, [currentLine]);
+
+  const reset = () => {
     setPickedStations([]);
     setGoingBackwards(null);
     setFarLeft(false);
     setFarRight(false);
-  }, [currentLine]);
+    setEarnedTicketParts(0);
+  };
 
   const isCorrect = (station) => {
     if (pickedStations.length === 0) return true; // first station
@@ -46,17 +54,30 @@ function Game() {
     if (isCorrect(station)) {
       addClassForCorrectAnimation(station);
       railClatterSound.play();
+      earnTicketPart();
+      if (gameIsFinished()){
+        console.log("game is finished");
+      } else{
+        console.log("game is not finished")
+      }
       setTimeout(() => {
         passCorrectStation(station, removeStation);
         endOfLine(station);
-      }, "400");
+      }, 400);
     } else {
       addClassForIncorrectAnimation(station);
       setTimeout(() => {
         removeClassForIncorrectAnimation(station);
-      }, "400");
+      }, 400);
     }
   };
+
+  const gameIsFinished = () => {
+    if (pickedStations.length === currentLine.EN.length -1 ) { 
+      console.log("game finished")
+      return true;     
+    }
+  }
 
   const passCorrectStation = (station, removeStation) => {
     updatePickedStations(station);
@@ -172,16 +193,38 @@ function Game() {
     }
   };
 
+  const earnTicketPart = () => {
+    setEarnedTicketParts(earnedTicketParts + 1);
+  };
+
+  const consumeTicket = () => {
+    if ( earnedTicketParts < 3 || pickedStations.length === currentLine.EN.length) return;
+      autoClickStationSign(currentLine.EN[nextStationIndex() - 1]);
+      // setTimeout(() => {
+      //   setEarnedTicketParts(earnedTicketParts - 3);
+      // }, 400);
+  };
+
   return (
     <>
-      <PlayField
+      <Playfield
         pickedStations={pickedStations}
         goingBackwards={goingBackwards}
         goBackwards={goBackwards}
         farLeft={farLeft}
         farRight={farRight}
+      >
+        <GameStatusHUD
+          consumeTicket={consumeTicket}
+          earnedTicketParts={earnedTicketParts}
+          reset={reset}
+        />
+      </Playfield>
+
+      <AvailableStations
+        pickStation={pickStation}
+        pickedStations={pickedStations}
       />
-      <AvailableStations pickStation={pickStation} />
     </>
   );
 }

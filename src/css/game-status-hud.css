@@ -1,0 +1,28 @@
+.game-status-hud{
+    position: absolute;
+    bottom: -40px;
+    right: 0px;
+    width: 50%;
+    height: 40px;
+    padding: 5px 10px 5px 0px;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    box-sizing: border-box;
+}
+
+.tickets{
+    display: flex;
+    gap: 2px;
+    padding-left: 10px;
+}
+
+.ticket-count{
+    align-self: center;
+}
+
+.ticket, 
+.reset{
+    height: 32px;
+    width: 32px;
+}

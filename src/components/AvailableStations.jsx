@@ -6,17 +6,22 @@ import shuffleArray from "/src/utils/fisherYates";
 import { v4 as uuidv4 } from "uuid";
 import "/src/css/available-stations.css";
 
-function AvailableStations({ pickStation }) {
-  const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
+function AvailableStations({ pickStation, pickedStations }) {
+  const { currentLine } = useContext(CurrentLineContext);
   const [query, setQuery] = useState("");
   const [unPickedStations, setUnPickedStations] = useState(
     shuffleArray(currentLine.EN.slice())
   );
-  const [animationTypes, setAnimationTypes] = useState(new Map());
 
   useEffect(() => {
     setUnPickedStations(shuffleArray(currentLine.EN.slice()));
   }, [currentLine]);
+
+  useEffect(() => {
+    if (pickedStations.length === 0) {
+      setUnPickedStations(shuffleArray(currentLine.EN.slice()));
+    }
+  }, [pickedStations]);
 
   const removeStation = (station) => {
     setUnPickedStations(unPickedStations.filter((stat) => stat !== station));

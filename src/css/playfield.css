@@ -1,3 +1,7 @@
+.playfield{
+  position: relative;
+}
+
 .game-rules {
   width: 100%;
   height: 30vh;
@@ -17,7 +21,7 @@
   position: relative;
   height: 30vh;
   grid-template-columns: repeat(auto-fit, 55px);
-  grid-template-rows: repeat(auto-fit, 92px);
+  grid-template-rows: repeat(auto-fit, 120px);
   padding-top: 20px;
   padding-bottom: 20px;
   align-items: center;
@@ -26,38 +30,16 @@
   max-width: 1000px;
 }
 
-.forwards-arrows,
-.backwards-arrows {
-  height: 84px;
-  width: 48px;
-  cursor: pointer;
+.arrows-container{
+  height: 120px;
   position: relative;
 }
 
-.forwards-arrows-container.instruction1 .instruction-text::after {
-  content: "or that way";
-  font-size: 0.8rem;
-  top: 12px;
-  left: 50px;
-  text-align: center;
-  border: dashed 2px var(--currentline-color);
-  padding: 0.5rem;
-  position: absolute;
-  font-weight: 700;
-  width: 60px;
-}
-
-.backwards-arrows-container.instruction1 .instruction-text::before {
-  content: "go this way";
-  font-size: 0.8rem;
-  top: 12px;
-  right: 40px;
-  text-align: center;
-  border: dashed 2px var(--currentline-color);
-  padding: 0.5rem;
-  position: absolute;
-  font-weight: 700;
-  width: 60px;
+.forwards-arrows,
+.backwards-arrows {
+  height: 92px;
+  width: 48px;
+  cursor: pointer;
 }
 
 .backwards-arrows {
@@ -74,7 +56,7 @@
   grid-template-rows: 60px 2rem;
   max-height: calc(60px + 2rem);
   width: 60px;
-  max-height: 92px;
+  max-height: 120px;
   position: relative;
   justify-items: center;
 }
@@ -136,10 +118,6 @@
   visibility: hidden;
 }
 
-.line-darkener-left{
-  position: absolute;
-  right: 0px;
-}
 
 @media (max-width: 766px) {
   .picked-stations-container {
@@ -159,13 +137,13 @@
 
 @media screen and (max-width: 767px) {
   .ellipsis {
-    font-size: 55px;
+    font-size: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--currentline-color);
     letter-spacing: -3px;
-    margin-bottom: 44px;
+    margin-bottom: 66px;
     margin-left: 2px;
   }
 }

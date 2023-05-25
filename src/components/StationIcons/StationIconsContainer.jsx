@@ -1,28 +1,11 @@
 import { useState, useEffect } from "react";
+import useIsMobile from "/src/hooks/useIsMobile";
 import StationIcon from "/src/components/StationIcons/StationIcon";
 import getMaxIcons from "/src/utils/getMaxIcons";
 import { v4 as uuidv4 } from "uuid";
 
 function StationIconsContainer({ pickedStations }) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const updateIsMobile = () => {
-      if (window.innerWidth <= 767) {
-        setIsMobile(window.innerWidth);
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    window.addEventListener("resize", updateIsMobile);
-    updateIsMobile();
-
-    return () => {
-      window.removeEventListener("resize", updateIsMobile);
-    };
-  }, []);
-
+  const isMobile = useIsMobile();
   const maxIcons = getMaxIcons(isMobile);
 
   const renderStationIcons = () => {

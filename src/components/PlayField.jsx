@@ -1,14 +1,14 @@
 import { useRef } from "react";
 import StationIconsContainer from "/src/components/StationIcons/StationIconsContainer.jsx";
 import arrows from "/src/assets/arrows.svg";
-import "/src/css/picked-stations.css";
+import "/src/css/playfield.css";
 
-function PlayField({ pickedStations, goBackwards, farLeft, farRight }) {
+function Playfield({ pickedStations, goBackwards, farLeft, farRight, children }) {
   const backwardsRef = useRef(null);
   const forwardsRef = useRef(null);
 
   return (
-    <>
+    <div className="playfield">
       {pickedStations && pickedStations.length === 0 ? (
         <div className="game-rules">
           <span>To choose a departure station, click a sign below</span>
@@ -20,7 +20,7 @@ function PlayField({ pickedStations, goBackwards, farLeft, farRight }) {
         <div className="picked-stations-container">
           {farLeft === false && (
             <div
-              className={`backwards-arrows-container`}
+              className={`backwards-arrows-container arrows-container`}
               ref={backwardsRef}
             >
               <img
@@ -32,13 +32,12 @@ function PlayField({ pickedStations, goBackwards, farLeft, farRight }) {
               ></img>
             </div>
           )}
-          {/* {farLeft === true && <div className="line-darkener-left"> </div>} */}
 
           <StationIconsContainer pickedStations={pickedStations} />
 
           {farRight === false && (
             <div
-              className={`forwards-arrows-container`}
+              className={`forwards-arrows-container arrows-container`}
               ref={forwardsRef}
             >
               <img
@@ -51,11 +50,12 @@ function PlayField({ pickedStations, goBackwards, farLeft, farRight }) {
             </div>
           )}
 
-          {/* {farRight === true && <div className="line-darkener-right"> </div>} */}
         </div>
+        
       )}
-    </>
+      {children}
+    </div>
   );
 }
 
-export default PlayField;
+export default Playfield;
