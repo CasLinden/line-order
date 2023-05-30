@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import GameInstructions from "/src/components/GameInstructions/GameInstructions.jsx"
 import StationIconsContainer from "/src/components/StationIcons/StationIconsContainer.jsx";
 import arrows from "/src/assets/arrows.svg";
 import "/src/css/playfield.css";
@@ -10,12 +11,7 @@ function Playfield({ pickedStations, goBackwards, farLeft, farRight, children })
   return (
     <div className="playfield">
       {pickedStations && pickedStations.length === 0 ? (
-        <div className="game-rules">
-          <span>To choose a departure station, click a sign below</span>
-          <span>
-            以下の駅名のいずれかをクリックして、出発駅を選択して下さい。
-          </span>
-        </div>
+        <GameInstructions/>
       ) : (
         <div className="picked-stations-container">
           {farLeft === false && (

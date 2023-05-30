@@ -14,10 +14,6 @@ function AvailableStations({ pickStation, pickedStations }) {
   );
 
   useEffect(() => {
-    setUnPickedStations(shuffleArray(currentLine.EN.slice()));
-  }, [currentLine]);
-
-  useEffect(() => {
     if (pickedStations.length === 0) {
       setUnPickedStations(shuffleArray(currentLine.EN.slice()));
     }
@@ -74,6 +70,7 @@ function AvailableStations({ pickStation, pickedStations }) {
               })}
           </div>
         </div>
+          {unPickedStations.length < 2 && <div className="bg-color-fader"></div>}
       </div>
   );
 }

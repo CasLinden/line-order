@@ -5,7 +5,7 @@
   grid-template-rows: 3fr 1fr 1fr;
   border: .4rem solid black;
   height: clamp(100px, 30vw, 166.67px);
-  width: clamp(320px, 1fr, 639px); 
+  width: clamp(100px, 1fr, 639px); 
 }
 
 
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   font-weight: 700;
-  font-size: clamp(12px, 9vw, 40px);
+  font-size: clamp(5px, 9vw, 40px);
   line-height: 1.1;
   margin-bottom: clamp(-12px, -4vw, -40px);
 }

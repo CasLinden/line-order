@@ -1,7 +1,6 @@
 .available-stations {
   display: grid;
-  
-  border-left: var(--border);
+  /* border-left: var(--border); */
   border-radius: var(--border-radius);
   position: relative;
 }
@@ -22,7 +21,6 @@
   left: 49.5%;
   top: 35px;
   background-color: var(--bg-accent);
-  /* background: red; */
 }
 
 .fifty-fifty-bar::after{
@@ -42,7 +40,7 @@
   background-color: var(--bg-accent);
   border-top: var(--border);
   border-right: var(--border);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: 0 var(--border-radius) 0 0;
   padding: 10px 10px 5px 0px;
 }
 
@@ -60,14 +58,14 @@
 .border-provider{
   background-color: var(--bg-accent);
   border-top: var(--border);
-  border-right: var(--border);
-  border-radius: var(--border-radius);
+  /* border-radius: var(--border-radius); */
   padding: 10px;
 }
 
 .available-stations-signs {
   display: grid;
   gap: 0.2rem;
+  align-items: start;
   max-height: 62vh;
   overflow-y: scroll;
   width: 100%;
@@ -78,7 +76,6 @@
   .available-stations-signs {
     grid-template-columns: repeat(2, minmax(320px, 500px));
   }
-
 }
 
 @media (max-width: 766px) {
@@ -125,8 +122,19 @@
   }
 }
 
+.bg-color-fader{
+  position: relative;
+}
 
-
-
-
-
+.bg-color-fader::after{
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0;
+  margin: 0;
+  height: 300px;
+  width: 100%;
+  background-color: red;
+  background: linear-gradient(to bottom, #1e1e1e, #242424);
+}

@@ -1,0 +1,126 @@
+:root{
+  --fake-cursor-translate-x: 0;
+  --fake-cursor-translate-y: 0;
+  --example-signs-left: 0;
+}
+.slide-1{
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1px, 1fr;
+  overflow: hidden;
+  height: 30vh;
+}
+
+.slide-instruction{
+  grid-column: span 2;
+}
+
+.example-signs-wrapper{
+  position: relative;
+  width: 100vw;
+  max-width: 1000px;
+}
+
+.example-signs{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  transform: scale(0.45);
+  transform-origin: top left;
+  position: absolute;
+  left: calc(var(--example-signs-left) - 2vw);
+}
+
+.fake-cursor-container{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: move-fake-cursor 6s infinite;
+  z-index: 5;
+}
+
+/* see components/slides/SlideOne.jsx */
+@keyframes move-fake-cursor {
+
+  30% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(var(--fake-cursor-translate-x), var(--fake-cursor-translate-y));
+  }
+
+  51% {
+    transform: translate(var(--fake-cursor-translate-x), var(--fake-cursor-translate-y)) scale(2);
+  }
+
+  55% {
+    transform: translate(var(--fake-cursor-translate-x), var(--fake-cursor-translate-y)) scale(1);
+  }
+
+  95% {
+    transform: translate(var(--fake-cursor-translate-x), var(--fake-cursor-translate-y));
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.example-signs > .Tokyo-sign{
+  animation: fake-correct-pick 6s infinite;
+}
+
+@keyframes fake-correct-pick {
+  0% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }
+
+  51% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }  
+  
+  55% {
+    transform: scaleX(0.2) translateY(-100%);
+    z-index: 4;
+    opacity: 0;
+  }
+
+  95% {
+    transform: scaleX(0.2) translateY(-100%);
+    z-index: 4;
+    opacity: 0;
+  }
+  
+  100% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.example-icon{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  animation: appear-and-vanish 6s infinite;
+}
+
+@keyframes appear-and-vanish{
+  0% {
+    visibility: hidden;
+  }
+  51% {
+   visibility: hidden;
+  }  
+  
+  60% {
+   visibility: visible;
+  }
+
+  93% {
+   visibility: hidden;
+  }
+}

@@ -23,11 +23,7 @@ function Game() {
   const [farLeft, setFarLeft] = useState(false);
   const [farRight, setFarRight] = useState(false);
   const [earnedTicketParts, setEarnedTicketParts] = useState(0); // 3 parts = 1 ticket
-
-  useEffect(() => {
-    reset();
-  }, [currentLine]);
-
+  
   const reset = () => {
     setPickedStations([]);
     setGoingBackwards(null);
@@ -35,6 +31,11 @@ function Game() {
     setFarRight(false);
     setEarnedTicketParts(0);
   };
+  
+  useEffect(() => {
+    reset();
+  }, [currentLine]);
+
 
   const isCorrect = (station) => {
     if (pickedStations.length === 0) return true; // first station
@@ -74,7 +75,7 @@ function Game() {
 
   const gameIsFinished = () => {
     if (pickedStations.length === currentLine.EN.length -1 ) { 
-      console.log("game finished")
+      console.log("game finished")      // -1 because setPicked is async
       return true;     
     }
   }

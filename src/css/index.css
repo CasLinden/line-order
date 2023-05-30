@@ -35,10 +35,9 @@ body{
   --text-color: rgba(255, 255, 255, 0.87);
   --window-color:  #79B5B5;
   --nav-size: 50px;
-  --border: 1px solid #474a4d;
+  --border: 1px solid rgba(71, 74, 77, 0.4);
   --border-radius: 8px;
   --speed: 500ms;
-
   color: var(--text-color);
   background-color: var(--bg);
   max-height: 100vh;
@@ -64,4 +63,10 @@ a {
 html {
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+button{
+appearance: none;
+-webkit-appearance: none;
+-moz-appearance: none;
 }

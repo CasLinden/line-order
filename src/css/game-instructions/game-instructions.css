@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.game-instructions {
+  width: 100%;
+  display: grid;
+  height: 30vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 40px;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.projector-screen{
+  grid-column: span 2;
+  width: 320px;
+  height: 100%;
+  border: .01px solid black;
+  justify-self: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 320px);
+}
+
+.slide{
+  height: 100%;
+}
+
+.slide-controls{
+  padding: 5px;
+  color: white;
+  height: 30px;
+  width: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  border: var(--border);
+  border-radius: 5px;
+}
+
+.prev-slide-btn{
+  background-color: var(--bg-accent-light);
+  justify-self: end;
+  gap: 5px;
+  margin-right: 5px;
+}
+
+.prev-slide-icon{
+  width: 20px;
+  height: 20px;
+}
+
+.next-slide-btn{
+  background-color: green;
+  justify-self: start;
+  margin-left: 5px;
+}
+
