@@ -18,6 +18,11 @@
     animation-play-state: paused;
 }
 
+.example-arrows .forwards-arrows, 
+.example-arrows .backwards-arrows{
+    width: 48px;
+}
+
 @keyframes drop-in-arrows{
     0% {
       
