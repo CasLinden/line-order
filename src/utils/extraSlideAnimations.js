@@ -8,11 +8,11 @@ const extraSlideAnimations = (slideIndex, direction) => {
         slide = document.querySelector('.slide-1')
         const instruction = slide.querySelector('.slide-instruction');
         const icon = slide.querySelector('.example-icon')
+        const arrows = document.querySelector('.example-arrows')
         if (direction > 0) {
           console.log("moving from SlideOne to SlideTwo");
           instruction.style.transform = 'translateX(-160px)';
           icon.style.animation = 'none';
-          const arrows = document.querySelector('.example-arrows')
           arrows.style.visibility = 'visible'
           arrows.style.animationPlayState = "running"; 
           console.log(arrows, arrows.style)
@@ -20,6 +20,7 @@ const extraSlideAnimations = (slideIndex, direction) => {
           console.log("moving back to SlideOne");
           instruction.style.transform = 'translateX(0px)';
           icon.style.animation = 'appear-and-vanish 6s infinite'
+          arrows.style.visibility = "hidden"
           resetAnimations(slide)
         }
         break;

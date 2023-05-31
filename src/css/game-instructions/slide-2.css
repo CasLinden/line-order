@@ -12,19 +12,19 @@
     gap: 65px;
     position: absolute;
     right: 163px;
-    top: -100px;
+    top: 84px;
     visibility: hidden; /* see extraSlideAnimations.js */
-    animation: drop-in-arrows .5s ease-out;
+    animation: drop-in-arrows 2s ease-in-out;
     animation-play-state: paused;
 }
 
 @keyframes drop-in-arrows{
     0% {
       
-      transform: translateY(0px);
+      transform: translateY(-200px);
     }
    
     100% {
-        transform: translateY(184px)
+        transform: translateY(0px)
     }
   }
