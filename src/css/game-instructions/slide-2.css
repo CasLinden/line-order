@@ -1,3 +1,30 @@
 .slide-2 {
-    background-color: #f2f2f2;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
 }
+
+.example-arrows{
+    display: flex;
+    gap: 65px;
+    position: absolute;
+    right: 163px;
+    top: -100px;
+    visibility: hidden; /* see extraSlideAnimations.js */
+    animation: drop-in-arrows .5s ease-out;
+    animation-play-state: paused;
+}
+
+@keyframes drop-in-arrows{
+    0% {
+      
+      transform: translateY(0px);
+    }
+   
+    100% {
+        transform: translateY(184px)
+    }
+  }

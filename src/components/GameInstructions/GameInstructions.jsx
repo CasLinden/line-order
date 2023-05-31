@@ -6,32 +6,38 @@ import SlideFour from "/src/components/GameInstructions/slides/SlideFour.jsx";
 import SlideFive from "/src/components/GameInstructions/slides/SlideFive.jsx";
 import PrevSlideBtn from "/src/components/GameInstructions/slide-components/PrevSlideBtn";
 import NextSlideBtn from "/src/components/GameInstructions/slide-components/NextSlideBtn";
+import extraSlideAnimations from "/src/utils/extraSlideAnimations";
+
 import "/src/css/game-instructions/game-instructions.css";
 
 
 function GameInstructions() {
-  const [slideDistance, setSlideDistance] = useState(0);
-  const condition = true;
+    const [slideContainerPosition, setSlideContainerPosition] = useState(0);
+    const [slideIndex, setSlideIndex] = useState(0);
+  
+    const slideMovements = [160, 320, 320, 320, 320];
+  
+    const slideIn = (direction) => { // direction: 1 for forward, -1 for backward
+      if (direction < 0 && slideIndex <= 0) return;
+      if (direction > 0 && slideIndex >= slideMovements.length - 1) return;
+      const movement = direction > 0 ? slideMovements[slideIndex] : slideMovements[slideIndex - 1];
+      setSlideContainerPosition((prev) => prev - direction * movement);
+      extraSlideAnimations(slideIndex, direction)
+      setSlideIndex((prev) => prev + direction);
+    };
 
-  const slideRight = () => {
-    if(slideDistance < -1279) return;
-    setSlideDistance((prev) => prev - 320);
-  };
-
-  const slideLeft = () => {
-    if (slideDistance >= 0) return;
-    setSlideDistance((prev) => prev + 320);
-  };
 
   return (
     <div className="game-instructions">
       <div className="projector-screen">
-        <div className="slide-container" style={{ left: `${slideDistance}px`}}>
+        <div className="slide-container" style={{ left: `${slideContainerPosition}px`}}>
           <SlideOne /><SlideTwo /><SlideThree /><SlideFour /><SlideFive />
         </div>
       </div>
-      {condition === true && <PrevSlideBtn slide={slideLeft} />}
-      <NextSlideBtn slide={slideRight}></NextSlideBtn>
+      <div className="slide-controls">
+        {slideContainerPosition < 0 && <PrevSlideBtn slideIn={() => slideIn(-1)} />}
+        <NextSlideBtn slideIn={() => slideIn(1)}></NextSlideBtn>
+      </div>
     </div>
   );
 }

@@ -20,12 +20,10 @@ function SlideOne() {
         let width = signsContainer.offsetWidth;
         let height = signsContainer.offsetHeight;
         let fullWidth = window.innerWidth > 1000 ? 1000 : window.innerWidth;
-        console.log(fullWidth)
-      
 
         document.documentElement.style.setProperty('--fake-cursor-translate-x', (width * 0.6 + "px"));
         document.documentElement.style.setProperty('--fake-cursor-translate-y', (height * 0.80 + "px"));
-        document.documentElement.style.setProperty('--example-signs-left', (fullWidth / 2 - (signsContainer.offsetWidth *0.45) + "px"));
+        document.documentElement.style.setProperty('--example-signs-left', (fullWidth / 2 - (signsContainer.offsetWidth *0.40) + "px"));
       }
     }
 
@@ -39,8 +37,8 @@ function SlideOne() {
   }, []);
 
   return (
-    <div className="instruction-slide slide-1">
-        {/* <div className="slide-instruction">Click a station to start</div>
+    <div className="slide slide-1">
+        <div className="slide-instruction">START: Click any station</div>
         <div className="example-signs-wrapper">
           <div className="example-signs">
             {exampleSigns.map((stat) => {
@@ -61,7 +59,7 @@ function SlideOne() {
           <IconHolder>
             <JRIcon num={1} abr="TYO"></JRIcon>
           </IconHolder>
-        </div> */}
+        </div>
     </div>
   );
 }

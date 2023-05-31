@@ -3,19 +3,16 @@
 .game-instructions {
   width: 100%;
   display: grid;
-  height: 30vh;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 40px;
+  height: 280px;
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
 }
 
 .projector-screen{
-  grid-column: span 2;
   width: 320px;
-  height: 100%;
-  border: .01px solid black;
+  height: 240px;
+  border: var(--border);
   justify-self: center;
   position: relative;
   overflow: hidden;
@@ -28,14 +25,22 @@
   width: 1600px;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 320px);
+  grid-template-columns: 320px 160px repeat(3, 320px);
+  transition: all 1s;
 }
 
 .slide{
-  height: 100%;
+  height: 240px;
 }
 
 .slide-controls{
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-controls > button{
   padding: 5px;
   color: white;
   height: 30px;
@@ -51,7 +56,6 @@
 
 .prev-slide-btn{
   background-color: var(--bg-accent-light);
-  justify-self: end;
   gap: 5px;
   margin-right: 5px;
 }
@@ -63,7 +67,6 @@
 
 .next-slide-btn{
   background-color: green;
-  justify-self: start;
   margin-left: 5px;
 }
 

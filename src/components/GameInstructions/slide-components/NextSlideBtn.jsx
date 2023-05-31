@@ -1,8 +1,8 @@
 // import arrowRight from '/src/assets/arrow-right.svg'
 
-function NextSlideBtn ({slide}) {
+function NextSlideBtn ({slideIn}) {
     return (
-        <button onClick={slide} className="next-slide-btn slide-controls">     
+        <button onClick={slideIn} className="next-slide-btn slide-controls">     
             GOT IT
         </button>
     )
