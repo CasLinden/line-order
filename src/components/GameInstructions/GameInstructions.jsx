@@ -23,7 +23,9 @@ function GameInstructions() {
       const movement = direction > 0 ? slideMovements[slideIndex] : slideMovements[slideIndex - 1];
       setSlideContainerPosition((prev) => prev - direction * movement);
       extraSlideAnimations(slideIndex, direction)
+      console.log("slideindex", slideIndex)
       setSlideIndex((prev) => prev + direction);
+      console.log("slideindex", slideIndex)
     };
 
 

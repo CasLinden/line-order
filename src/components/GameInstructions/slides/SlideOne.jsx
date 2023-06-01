@@ -36,6 +36,8 @@ function SlideOne() {
     };
   }, []);
 
+  const arrows = document.querySelector('.example-arrows')
+
   return (
     <div className="slide slide-1">
         <div className="slide-instruction">START: Click any station</div>

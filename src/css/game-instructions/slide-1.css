@@ -111,7 +111,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 20px;
-  /* animation: appear-and-vanish 6s infinite; */
+  animation: appear-and-vanish 6s infinite;
 }
 
 @keyframes appear-and-vanish{
@@ -131,9 +131,6 @@
   }
 }
 
-.example-icon .backwards-arrows-container{
-  /* padding-left: 10px; */
-}
 
 /* example-signs-wrapper dimensions impact scaling of JRStationSigns which used vw and vh, */
 /* the alternative to these media queries is to redo the css of JRStationSign */
