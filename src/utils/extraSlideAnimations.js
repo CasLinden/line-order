@@ -1,7 +1,6 @@
 import resetAnimations from "/src/utils/resetAnimations";
 
 const extraSlideAnimations = (slideIndex, direction) => {
-    // const animationSlideIndex = direction > 0 ? slideIndex : slideIndex + direction;
     let slide // your indigation towards the spaghetti code
     let prevSlide
     let nextSlide 
@@ -10,35 +9,36 @@ const extraSlideAnimations = (slideIndex, direction) => {
       case 0:
         slide = document.querySelector('.slide-1')
         nextSlide = document.querySelector('.slide-2')
-        const instruction = slide.querySelector('.slide-instruction');
         const arrows = document.querySelector('.example-arrows')
-        // if (direction > 0) {
           console.log("moving from SlideOne to SlideTwo");
-          // resetAnimations(slide)
-          instruction.style.transform = 'translateX(-160px)';
+          slide.querySelector('.slide-instruction').style.transform = 'translateX(-160px)';
+          nextSlide.querySelector('.slide-instruction').style.visibility = "visible";
+          nextSlide.querySelector('.slide-instruction').style.animationPlayState = "running";
           icon.style.animation = 'none';
           arrows.style.visibility = 'visible'
           arrows.style.animationPlayState = "running"; 
-        // } else {
-        //   console.log("moving back to SlideOne");
-
-        
-        //   arrows.style.visibility = "hidden"
-        //   resetAnimations(slide)
-        // }
         break;
       case 1:
         slide = document.querySelector('.slide-2')
         prevSlide = document.querySelector('.slide-1')
+        nextSlide = document.querySelector('.slide-3')
         if (direction > 0) {
           console.log("moving from SlideTwo to SlideThree");
-          
+          const instruction = slide.querySelector('.slide-instruction')
+          instruction.style.visibility = "visible";
+          instruction.style.transform = "translateY(-200px)";
+          slide.querySelector('.forwards-arrows-container').style.transform = "translateX(110px)"
+          slide.querySelector('.backwards-arrows-container').style.transform = "translateX(50px)"
+          icon.style.transform = "translateX(50px)"
+          nextSlide.querySelector(".example-icon").style.visibility = "visible";
+          slide.querySelector('.example-arrows').style.visibility = "hidden";
+          nextSlide.querySelector('.example-arrows').style.visibility ="visible";
         } else {
           console.log("moving back to SlideOne");
-          resetAnimations(slide)
-          resetAnimations(prevSlide)
+          resetAnimations(slide);
+          resetAnimations(prevSlide);
           prevSlide.querySelector('.slide-instruction').style.transform = 'translateX(0px)';
-          icon.style.animation = 'appear-and-vanish 6s infinite'
+          icon.style.animation = 'appear-and-vanish 6s infinite';
         }
         break;
       case 2:
@@ -49,7 +49,15 @@ const extraSlideAnimations = (slideIndex, direction) => {
         } else {
           console.log("moving back to SlideTwo");
           resetAnimations(prevSlide)
+          prevSlide.querySelector('.forwards-arrows-container').style.transform = "translateX(60px)"
+          prevSlide.querySelector('.backwards-arrows-container').style.transform = "translateX(0px)"
+          icon.style.transform = "translateX(0px)"
+          slide.querySelector(".example-icon").style.visibility = "hidden";
           prevSlide.querySelector('.example-arrows').style.animationPlayState = "running"; 
+          prevSlide.querySelector('.slide-instruction').style.transform = "translateY(0px)"
+          prevSlide.querySelector('.forwards-arrows-container').style.transform = "translateX(0px)"
+          slide.querySelector('.example-arrows').style.visibility = "hidden";
+          prevSlide.querySelector('.example-arrows').style.visibility ="visible";
         }
         break;
       case 3:
@@ -58,17 +66,11 @@ const extraSlideAnimations = (slideIndex, direction) => {
           console.log("moving from SlideFour to SlideFive");
         } else {
           console.log("moving back to SlideThree");
-          // resetAnimations(slide)
         }
         break;
       case 4:
         slide = document.querySelector('.slide-5')
-        // if (direction > 0) {
-        //   console.log("attempting to move forward from SlideFive");
-        // } else {
           console.log("moving back to SlideFour");
-          // resetAnimations(slide)
-        // }
         break;
       default:
         break;

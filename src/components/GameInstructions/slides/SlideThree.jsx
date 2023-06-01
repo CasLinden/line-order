@@ -1,10 +1,28 @@
+import JRIcon from "/src/components/StationIcons/UniqueIcons/JRIcon.jsx";
+import IconHolder from "/src/components/StationIcons/IconHolder.jsx";
+import station from "/src/utils/station.js";
+import Arrows from "/src/components/Arrows.jsx"
+import cursor from "/src/assets/cursor.svg";
 import "/src/css/game-instructions/slide-3.css";
 
-function SlideThree(){
+function SlideThree() {
+  return (
+    <div className="slide slide-3">
+      <div className="slide-instruction">You can switch directions</div>
+      <div className="example-icon">
+        <IconHolder>
+          <JRIcon num={2} abr="KND"></JRIcon>
+        </IconHolder>
+        <div className="fake-cursor-container">
+          <img src={cursor} alt="fake cursor" />
+        </div>
+        <div className="example-arrows">
+            <Arrows goBackwards={() => console.log('fake arrow does nothing')} bool={true}></Arrows>
+            <Arrows goBackwards={() => console.log('fake arrow does nothing')} bool={false}></Arrows>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-    return (
-        <div className="slide slide-3">SLIDE Three</div>
-    )
-} 
-
-export default SlideThree
+export default SlideThree;

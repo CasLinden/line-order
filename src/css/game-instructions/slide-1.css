@@ -1,3 +1,4 @@
+/* set in SlideOne.jsx because example signs has variable size */
 :root{
   --fake-cursor-translate-x: 0;
   --fake-cursor-translate-y: 0;
@@ -13,7 +14,7 @@
   align-items: center;
 }
 
-.slide-instruction{
+.slide-1 .slide-instruction{
   grid-column: span 2;
   justify-self: center;
   padding-top: 15px;
@@ -37,10 +38,10 @@
   padding-right: 5px;
 }
 
-.fake-cursor-container{
+.slide-1 .fake-cursor-container{
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   animation: move-fake-cursor 6s infinite;
   z-index: 5;
 }
@@ -106,7 +107,7 @@
   }
 }
 
-.example-icon{
+.slide-1 .example-icon{
   display: grid;
   justify-content: center;
   align-items: center;

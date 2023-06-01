@@ -1,35 +1,49 @@
 .slide-2 {
-    width: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.example-arrows{
-    display: flex;
-    gap: 65px;
-    position: absolute;
-    right: 163px;
-    top: 84px;
-    visibility: hidden; /* see extraSlideAnimations.js */
-    animation: drop-in-arrows 2s ease-in-out;
-    animation-play-state: paused;
+.slide-2 .example-arrows {
+  display: flex;
+  gap: 65px;
+  position: absolute;
+  right: 163px;
+  top: 84px;
+  visibility: hidden; /* see extraSlideAnimations.js */
+  animation: drop-in 1.5s ease-in-out;
+  animation-play-state: paused;
 }
 
-.example-arrows .forwards-arrows, 
-.example-arrows .backwards-arrows{
-    width: 48px;
-}
-
-@keyframes drop-in-arrows{
-    0% {
-      
-      transform: translateY(-200px);
-    }
-   
-    100% {
-        transform: translateY(0px)
-    }
+@keyframes drop-in {
+  0% {
+    transform: translateY(-200px);
   }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.example-arrows .forwards-arrows,
+.example-arrows .backwards-arrows {
+  width: 48px;
+}
+
+.slide-2 .slide-instruction {
+  text-align: center;
+  transition: all 1.5s ease-in-out;
+}
+
+@keyframes fly-up {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+
