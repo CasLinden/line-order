@@ -8,7 +8,7 @@ import "/src/css/game-instructions/slide-3.css";
 function SlideThree() {
   return (
     <div className="slide slide-3">
-      <div className="slide-instruction">You can switch directions</div>
+      <div className="slide-instruction">Now keep going that way,</div>
       <div className="example-icon">
         <IconHolder>
           <JRIcon num={2} abr="KND"></JRIcon>

@@ -17,6 +17,11 @@
   animation-play-state: paused;
 }
 
+.slide-2 .forwards-arrows-container,
+.slide-2 .backwards-arrows-container{
+  transition: all 1.5s ease-in-out;
+}
+
 @keyframes drop-in {
   0% {
     transform: translateY(-200px);
@@ -30,20 +35,22 @@
 .example-arrows .forwards-arrows,
 .example-arrows .backwards-arrows {
   width: 48px;
+  
 }
 
 .slide-2 .slide-instruction {
   text-align: center;
-  transition: all 1.5s ease-in-out;
+  animation-delay: 1s;
+  transition: all .5s ease-in-out;
 }
 
-@keyframes fly-up {
+/* @keyframes fly-up {
   0% {
     transform: translateY(0px);
   }
   100% {
     transform: translateY(-200px);
   }
-}
+} */
 
 

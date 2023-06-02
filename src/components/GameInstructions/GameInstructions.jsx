@@ -14,7 +14,7 @@ function GameInstructions() {
     const [slideContainerPosition, setSlideContainerPosition] = useState(0);
     const [slideIndex, setSlideIndex] = useState(0);
   
-    const slideMovements = [160, 0, 320, 320, 320];
+    const slideMovements = [160, 0, 0, 320, 320];
   
     const slideIn = (direction) => { // direction: 1 for forward, -1 for backward
       if (direction < 0 && slideIndex <= 0) return;

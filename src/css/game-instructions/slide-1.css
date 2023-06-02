@@ -113,6 +113,7 @@
   align-items: center;
   padding-top: 20px;
   animation: appear-and-vanish 6s infinite;
+  transition: all 1.5s ease-in-out;
 }
 
 @keyframes appear-and-vanish{

@@ -7,15 +7,18 @@
 
 .slide-3 .slide-instruction {
   position: absolute;
-  visibility: hidden;
-  transition: all 1s ease-in-out;
+  text-align: center;
+  width: 150px;
+  top: -200px;
+  left: -230px;
+  transition: all 1.5s ease-in-out;
 }
 
 .slide-3 .example-icon {
   position: absolute;
   visibility: hidden;
-  left: -160px;
-  top: 90px;
+  left: -159px;
+  top: 130px;
 }
 
 .slide-3 .fake-cursor-container {
@@ -25,7 +28,8 @@
   z-index: 5;
   top: 35px;
   left: 80px;
-  animation: hover-arrows 4s infinite;
+  visibility: hidden;
+  /* animation: hover-arrows 7.5s infinite; */
 }
 
 .slide-3 .example-arrows{
@@ -38,31 +42,60 @@
 }
 
 .slide-3 .forwards-arrows-container{
-  filter: brightness(-100%), grayscale(0%);
+  filter: none;
+  /* animation: toggle-off-on 7.5s infinite; */
 }
 
 .slide-3 .backwards-arrows-container{
-  filter: brightness(40%) grayscale(100%);  
+  filter: brightness(40%) grayscale(100%); 
+  /* animation: toggle-on-off 7.5s infinite; */
+}
+
+@keyframes toggle-off-on{
+  0%, 40%{
+    filter: none;
+  }
+  42%, 80%{
+    filter: brightness(40%) grayscale(100%); 
+  }
+
+  82%{
+    filter: none;
+  }
+}
+
+@keyframes toggle-on-off {
+  0%, 40%{
+    filter: brightness(40%) grayscale(100%); 
+  }
+  42%, 80%{
+    filter: none;
+  }
+  82%{
+    filter: brightness(40%) grayscale(100%); 
+  }
 }
 
 @keyframes hover-arrows {
-  0%{
-   transform: translateX(0px)
+  0%, 20% {
+    transform: translateX(0px) scale(1);
   }
-
-  25%{
-    transform: translateX(-175px)
+ 40% {
+    transform: translateX(-175px) scale(1);
   }
-
-  50%{ 
-    transform: translateX(-175px)
+  41% {
+    transform: translateX(-175px) scale(2);
   }
-
-  75%{
-    transform: translateX(0px);
+  43.33%, 60% {
+    transform: translateX(-175px) scale(1);
   }
-
-  100%{
-    transform: translateX(0px)
+  80%{
+    transform: translateX(0) scale(1);
+  }
+  81%{
+    transform: translateX(0) scale(2);
+  }
+  83.33%, 100% {
+    transform: translateX(0) scale(1);
   }
 }
