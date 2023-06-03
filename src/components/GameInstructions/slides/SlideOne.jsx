@@ -40,7 +40,7 @@ function SlideOne() {
 
   return (
     <div className="slide slide-1">
-        <div className="slide-instruction">START: Click any station</div>
+        <div className="slide-instruction">To begin, click any station</div>
         <div className="example-signs-wrapper">
           <div className="example-signs">
             {exampleSigns.map((stat) => {

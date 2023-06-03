@@ -6,7 +6,7 @@ function SlideTwo(){
 
     return (
         <div className="slide slide-2">
-            <div className="slide-instruction">You may click any adjacent station</div>
+            <div className="slide-instruction">Then, click either adjacent station</div>
             <div className="example-arrows">
                 <Arrows goBackwards={() => console.log('fake arrow does nothing')} bool={true}></Arrows>
                 <Arrows goBackwards={() => console.log('fake arrow does nothing')} bool={false}></Arrows>

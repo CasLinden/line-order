@@ -1,0 +1,25 @@
+.slide-6{
+    width: 320px;
+    color: white;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+}
+
+.slide-6 .slide-instruction{
+    padding-top: 1.3rem;
+    font-size: 1.3rem;
+}
+
+.disable-instructions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-self: center;
+}
+
+.checkbox{
+    border: 1px solid white;
+    width: 20px;
+    height: 20px;
+}

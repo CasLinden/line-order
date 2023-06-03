@@ -22,15 +22,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1600px;
+  /* width: 1600px; */
   height: 100%;
   display: grid;
-  grid-template-columns: 320px 160px 0px 0px 302px;
+  grid-template-columns: 320px 320px 160px 0px 0px 320px 320px;
   transition: all 1s;
 }
 
 .slide{
   height: 240px;
+
 }
 
 .slide-controls{
@@ -40,7 +41,8 @@
   align-items: center;
 }
 
-.slide-instruction{
+.slide-instruction, 
+.slide-instruction-secondary{
   text-align: center;
 }
 
@@ -64,13 +66,20 @@
   margin-right: 5px;
 }
 
+.next-slide-icon,
 .prev-slide-icon{
   width: 20px;
   height: 20px;
 }
 
+
+
 .next-slide-btn{
   background-color: green;
   margin-left: 5px;
+}
+
+.SHOW-ME-HOW{
+  min-width: 160px;
 }
 

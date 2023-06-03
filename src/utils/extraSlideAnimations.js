@@ -8,21 +8,30 @@ const extraSlideAnimations = (slideIndex, direction) => {
   const icon = document.querySelector(".example-icon");
   switch (slideIndex) {
     case 0:
+      nextSlide = document.querySelector('.slide-1')
+      resetAnimations(nextSlide)
+      console.log("moving from SlideZero to SlideOne");
+      break;
+    case 1:
       slide = document.querySelector(".slide-1");
       nextSlide = document.querySelector(".slide-2");
       const arrows = document.querySelector(".example-arrows");
-      console.log("moving from SlideOne to SlideTwo");
-      slide.querySelector(".slide-instruction").style.transform =
-        "translateX(-160px)";
-      nextSlide.querySelector(".slide-instruction").style.visibility =
-        "visible";
-      nextSlide.querySelector(".slide-instruction").style.animationPlayState =
-        "running";
-      icon.style.animation = "none";
-      arrows.style.visibility = "visible";
-      arrows.style.animationPlayState = "running";
+      if (direction > 0) {
+        console.log("moving from SlideOne to SlideTwo");
+        slide.querySelector(".slide-instruction").style.transform =
+          "translateX(-160px)";
+        nextSlide.querySelector(".slide-instruction").style.visibility =
+          "visible";
+        nextSlide.querySelector(".slide-instruction").style.animationPlayState =
+          "running";
+        icon.style.animation = "none";
+        arrows.style.visibility = "visible";
+        arrows.style.animationPlayState = "running";
+      } else {
+        console.log("moving back to slideZero");
+      }
       break;
-    case 1:
+    case 2:
       slide = document.querySelector(".slide-2");
       prevSlide = document.querySelector(".slide-1");
       nextSlide = document.querySelector(".slide-3");
@@ -53,13 +62,13 @@ const extraSlideAnimations = (slideIndex, direction) => {
         icon.style.animation = "appear-and-vanish 6s infinite";
       }
       break;
-    case 2:
+    case 3:
       slide = document.querySelector(".slide-3");
       prevSlide = document.querySelector(".slide-2");
-      nextSlide = document.querySelector(".slide-4")
+      nextSlide = document.querySelector(".slide-4");
       if (direction > 0) {
         console.log("moving from SlideThree to SlideFour");
-        resetAnimations(slide)
+        resetAnimations(slide);
         const fakeCursor = slide.querySelector(".fake-cursor-container");
         fakeCursor.style.visibility = "visible";
         fakeCursor.style.animation = "hover-arrows 7.5s infinite";
@@ -67,11 +76,12 @@ const extraSlideAnimations = (slideIndex, direction) => {
           "toggle-off-on 7.5s infinite";
         slide.querySelector(".backwards-arrows-container").style.animation =
           "toggle-on-off 7.5s infinite";
-        nextSlide.querySelector(".slide-instruction").style.transform = "translateX(-320px)"
+        nextSlide.querySelector(".slide-instruction").style.transform =
+          "translateX(-320px)";
       } else {
         console.log("moving back to SlideTwo");
         resetAnimations(prevSlide);
-        resetAnimations(slide)
+        resetAnimations(slide);
         prevSlide.querySelector(".forwards-arrows-container").style.transform =
           "translateX(60px)";
         prevSlide.querySelector(".backwards-arrows-container").style.transform =
@@ -89,12 +99,14 @@ const extraSlideAnimations = (slideIndex, direction) => {
         prevSlide.querySelector(".example-arrows").style.visibility = "visible";
         slide.querySelector(".slide-instruction").style.transform =
           "translateY(0px)";
+        slide.querySelector(".example-icon").style.visibility = "hidden";
+        slide.querySelector(".example-arrows").style.visibility = "hidden";
       }
       break;
-    case 3:
+    case 4:
       prevSlide = document.querySelector(".slide-3");
       slide = document.querySelector(".slide-4");
-      nextSlide = document.querySelector(".slide-5")
+      nextSlide = document.querySelector(".slide-5");
       if (direction > 0) {
         console.log("moving from SlideFour to SlideFive");
       } else {
@@ -105,16 +117,19 @@ const extraSlideAnimations = (slideIndex, direction) => {
           "none";
         prevSlide.querySelector(".backwards-arrows-container").style.animation =
           "none";
-          slide.querySelector(".slide-instruction").style.transform =
+        slide.querySelector(".slide-instruction").style.transform =
           "translateX(0px)";
-        
-
       }
       break;
-    case 4:
+    case 5:
       slide = document.querySelector(".slide-5");
       prevSlide = document.querySelector(".slide-4");
-      console.log("moving back to SlideFour");
+      if (direction > 0) {
+
+      } else {
+        console.log("moving back to SlideFour");
+
+      }
       break;
     default:
       break;
