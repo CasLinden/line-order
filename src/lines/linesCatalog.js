@@ -1,7 +1,7 @@
 export const linesCatalog = {
   Tokyo: {
     JR: ["Yamanote Line", "Chuo Line"],
-    Metro: ["Yurakucho Line"],
+    Metro: ["Yurakucho Line", "Ginza Line"],
     Tokyu: ["Ikegami Line"],
   },
   Heerlen: {

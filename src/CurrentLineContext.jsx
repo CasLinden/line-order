@@ -4,14 +4,14 @@ import yamanote from "/src/lines/tokyo/jr/Yamanote Line";
 export const CurrentLineContext = createContext();
 
 export const CurrentLineProvider = ({ children }) => {
-  const [currentCity, setCurrentCity] = useState("Tokyo");
-  const [currentGroup, setCurrentGroup] = useState("JR");
   const [currentLine, setCurrentLine] = useState(() => {
     const savedLine = localStorage.getItem('currentLine');
     return savedLine 
-      ? JSON.parse(savedLine)
-      : yamanote;
+    ? JSON.parse(savedLine)
+    : yamanote;
   });
+  const [currentGroup, setCurrentGroup] = useState(currentLine.group);
+  const [currentCity, setCurrentCity] = useState(currentLine.city);
 
   useEffect(() => {
     localStorage.setItem('currentLine', JSON.stringify(currentLine));
