@@ -43,7 +43,7 @@ function AvailableStations({ pickStation, pickedStations }) {
           <div className="search-container">
             <input
               className="search"
-              placeholder={"Search..."}
+              placeholder={"Filter Stations"}
               onFocus={(e) => {
                 e.target.value = "";
                 setQuery("");

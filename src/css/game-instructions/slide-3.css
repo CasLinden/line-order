@@ -16,9 +16,10 @@
 
 .slide-3 .example-icon {
   position: absolute;
-  visibility: hidden;
   left: -159px;
   top: 130px;
+  visibility: hidden;
+  animation: appear 1.5s;
 }
 
 .slide-3 .fake-cursor-container {
@@ -29,7 +30,7 @@
   top: 35px;
   left: 80px;
   visibility: hidden;
-  /* animation: hover-arrows 7.5s infinite; */
+  /* animation: hover-arrows 7.5s infinite; // set in extraSlideAnimations */
 }
 
 .slide-3 .example-arrows{
@@ -37,18 +38,20 @@
   top: -6px;
   left: -115px;
   gap: 125px;
-  visibility: hidden;
   display: flex;
+  visibility: hidden;
+  animation: appear 1.5s;
+  
 }
 
 .slide-3 .forwards-arrows-container{
   filter: none;
-  /* animation: toggle-off-on 7.5s infinite; */
+  /* animation: toggle-off-on 7.5s infinite; // set in extraSlideAnimations */
 }
 
 .slide-3 .backwards-arrows-container{
   filter: brightness(40%) grayscale(100%); 
-  /* animation: toggle-on-off 7.5s infinite; */
+  /* animation: toggle-on-off 7.5s infinite; // set in extraSlideAnimations */
 }
 
 @keyframes toggle-off-on{
@@ -97,5 +100,17 @@
   }
   83.33%, 100% {
     transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes appear{
+    0% {
+      visibility: hidden;
+    }
+    99.9%{
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
   }
 }

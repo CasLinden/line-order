@@ -55,13 +55,13 @@ function Game() {
     if (isCorrect(station)) {
       addClassForCorrectAnimation(station);
       railClatterSound.play();
-      earnTicketPart();
       if (gameIsFinished()){
         console.log("game is finished");
       } else{
         console.log("game is not finished")
       }
       setTimeout(() => {
+        earnTicketPart();
         passCorrectStation(station, removeStation);
         endOfLine(station);
       }, 400);
@@ -74,8 +74,7 @@ function Game() {
   };
 
   const gameIsFinished = () => {
-    if (pickedStations.length === currentLine.EN.length -1 ) { 
-      console.log("game finished")      // -1 because setPicked is async
+    if (pickedStations.length === currentLine.EN.length -1 ) {  // -1 because setPicked is async
       return true;     
     }
   }
@@ -201,9 +200,9 @@ function Game() {
   const consumeTicket = () => {
     if ( earnedTicketParts < 3 || pickedStations.length === currentLine.EN.length) return;
       autoClickStationSign(currentLine.EN[nextStationIndex() - 1]);
-      // setTimeout(() => {
-      //   setEarnedTicketParts(earnedTicketParts - 3);
-      // }, 400);
+      setTimeout(() => {
+        setEarnedTicketParts(earnedTicketParts - 3);
+      }, 400);
   };
 
   return (

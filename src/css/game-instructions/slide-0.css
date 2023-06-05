@@ -4,4 +4,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.show-instructions{
+  font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--window-color);
 }

@@ -22,7 +22,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* width: 1600px; */
   height: 100%;
   display: grid;
   grid-template-columns: 320px 320px 160px 0px 0px 320px 320px;
@@ -71,15 +70,49 @@
   width: 20px;
   height: 20px;
 }
-
-
-
 .next-slide-btn{
-  background-color: green;
+  background-color: rgb(0, 100, 0);
   margin-left: 5px;
 }
 
-.SHOW-ME-HOW{
+.hide-slideshow-btn{
+  min-width: 120px;
+}
+
+.HOW-TO-PLAY{
   min-width: 160px;
 }
 
+.instructions-placeholder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.show-slideshow{
+  width: 15px;
+  height: 15px;
+  align-self: center;
+  justify-self: center;
+}
+
+.click-shield-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - var(--topOffset));
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.click-shield-bottom {
+  position: fixed;
+  top: var(--bottomOffset);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.8);
+}

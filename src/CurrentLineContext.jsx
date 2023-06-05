@@ -1,13 +1,21 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import yamanote from "/src/lines/tokyo/jr/Yamanote Line";
-import zitterd from "/src/lines/heerlen/NS/Noa Zitterd";
 
 export const CurrentLineContext = createContext();
 
 export const CurrentLineProvider = ({ children }) => {
   const [currentCity, setCurrentCity] = useState("Tokyo");
   const [currentGroup, setCurrentGroup] = useState("JR");
-  const [currentLine, setCurrentLine] = useState(yamanote);
+  const [currentLine, setCurrentLine] = useState(() => {
+    const savedLine = localStorage.getItem('currentLine');
+    return savedLine 
+      ? JSON.parse(savedLine)
+      : yamanote;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('currentLine', JSON.stringify(currentLine));
+  }, [currentLine]);
 
   const useLineColor = () => {
     document.documentElement.style.setProperty(

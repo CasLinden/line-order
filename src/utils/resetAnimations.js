@@ -1,6 +1,5 @@
 const  resetAnimations = (element) => {
   let children = element.getElementsByTagName("*");
-    console.log(children)
   for (let i = 0; i < children.length; i++) {
     let child = children[i];
     let style = window.getComputedStyle(child);
