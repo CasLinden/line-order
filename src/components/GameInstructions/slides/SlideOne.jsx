@@ -59,7 +59,7 @@ function SlideOne() {
         </div>
         <div className="example-icon">
           <IconHolder>
-            <JRIcon num={1} abr="TYO"></JRIcon>
+            <JRIcon num={1} abr="TYO" lineAbr="JY"></JRIcon>
           </IconHolder>
         </div>
     </div>

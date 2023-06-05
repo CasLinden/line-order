@@ -55,8 +55,7 @@ const ikegami = {
     "Ikegami",
     "Hasunuma",
     "Kamata",
-  ],
-  main: {},
+  ]
 };
 
 export default ikegami;

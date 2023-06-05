@@ -5,6 +5,7 @@ const yamanote = {
   group: "JR",
   loop: true,
   color:  '#9ACD32', 
+  lineAbr: "JY",
   JP: [
     "東京",
     "神田",

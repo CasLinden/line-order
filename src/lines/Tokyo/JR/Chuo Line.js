@@ -5,6 +5,7 @@ const chuo = {
   group: "JR",
   loop: false,
   color: "#FF4500",
+  lineAbr: "JC",
   JP: [
     "東京",
     "神田",

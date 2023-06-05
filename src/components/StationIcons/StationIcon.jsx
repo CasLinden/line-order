@@ -6,9 +6,10 @@ import station from "/src/utils/station";
 import { v4 as uuidv4 } from "uuid";
 
 function StationIcon({stat}) {
-  const { currentLine, setCurrentLine } = useContext(CurrentLineContext);
+  const { currentLine } = useContext(CurrentLineContext);
   let currentStat = station(stat, currentLine);
-  let abr = currentLine.main[stat];
+  let abr = currentLine.main?.[stat] || null;
+
 
   return (
     <IconHolder
@@ -21,6 +22,7 @@ function StationIcon({stat}) {
         num={currentStat.num}
         abr={abr ? abr : null}
         group={currentLine.group}
+        lineAbr={currentLine.lineAbr}
       />
     </IconHolder>
   );

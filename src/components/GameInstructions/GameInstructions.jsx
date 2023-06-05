@@ -13,6 +13,7 @@ import ClickShield from "/src/components/GameInstructions/ClickShield"
 import extraSlideAnimations from "/src/utils/extraSlideAnimations";
 import info from "/src/assets/info.svg"
 import "/src/css/game-instructions/game-instructions.css";
+import "/src/css/game-instructions/override-colors.css"
 
 function GameInstructions() {
     const [slideContainerPosition, setSlideContainerPosition] = useState(0);

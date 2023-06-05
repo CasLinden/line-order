@@ -11,7 +11,7 @@ function SlideThree() {
       <div className="slide-instruction">Now keep going that way,</div>
       <div className="example-icon">
         <IconHolder>
-          <JRIcon num={2} abr="KND"></JRIcon>
+          <JRIcon num={2} abr="KND" lineAbr="JY" ></JRIcon>
         </IconHolder>
         <div className="fake-cursor-container">
           <img src={cursor} alt="fake cursor" />

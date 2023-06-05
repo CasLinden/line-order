@@ -1,0 +1,62 @@
+.tokyo-metro-sign {
+    background-color: white;
+    color: #242424;
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    grid-template-columns: 1fr;
+    border: .4rem solid black;
+    height: clamp(100px, 30vw, 166.67px);
+    width: clamp(100px, 1fr, 639px); 
+  }
+  
+  .tokyo-metro-sign .main-station-title {
+    color: #242424;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    font-weight: 700;
+    font-size: clamp(5px, 9vw, 35px);
+    line-height: 1.1;
+  }
+
+  .tokyo-metro-sign .hiragana {
+    color: #242424;
+    display: flex;
+    font-weight: 900;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding-left: clamp(1px, 5px, 10px);
+    letter-spacing: (1px, 5px, 10px);
+    font-size: clamp(10px, 3vw, 16px);
+  }
+
+  .bottom-section{
+    background-color: var(--currentline-color);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .icon-container{
+    box-sizing: border-box;
+    margin-top: 2px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .4);
+  }
+
+  .tokyo-metro-sign .top-section {
+    display: flex;
+    justify-self: center;
+  }
+  
+  .tokyo-metro-sign .station-romaji {
+    font-weight: 600;
+    font-size: clamp(12px, 3vw, 20px);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  } 

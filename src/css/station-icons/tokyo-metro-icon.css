@@ -1,0 +1,40 @@
+.tokyo-metro-icon {
+  align-self: end;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  border: 5px solid var(--currentline-color);
+  border-radius: 50%;
+  margin: 1px;
+  height: 40px;
+  width: 40px;
+  line-height: 100%;
+  background: white;
+  font-size: 15px;
+}
+
+.line-abreviation {
+  position: absolute;
+  left: 0;
+  width: 30px;
+  text-align: center;
+  color: black;
+  top: 1px;
+  height: 12.8px;
+  line-height: 12.8px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.station-number {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  height: 15.2px;
+  width: 30px;
+  line-height: 15.2px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14.2px;
+  color: black;
+}
