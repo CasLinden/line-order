@@ -200,9 +200,9 @@ function Game() {
   const consumeTicket = () => {
     if ( earnedTicketParts < 3 || pickedStations.length === currentLine.EN.length) return;
       autoClickStationSign(currentLine.EN[nextStationIndex() - 1]);
-      setTimeout(() => {
-        setEarnedTicketParts(earnedTicketParts - 3);
-      }, 400);
+      // setTimeout(() => {
+      //   setEarnedTicketParts(earnedTicketParts - 3);
+      // }, 400);
   };
 
   return (

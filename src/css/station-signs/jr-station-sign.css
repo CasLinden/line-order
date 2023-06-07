@@ -12,6 +12,7 @@
 .jr-sign .top-section {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1.5fr;
+  justify-content: space-between;
   padding-top: clamp(5px, 1vw, 10px);
 }
 
@@ -27,9 +28,10 @@
   display: flex;
   justify-content: space-between;
   font-weight: 700;
-  font-size: clamp(5px, 9vw, 40px);
+  font-size: clamp(5px, 8.5vw, 40px);
   line-height: 1.1;
   margin-bottom: clamp(-12px, -4vw, -40px);
+  /* overflow: hidden; */
 }
 
 .jr-sign .hiragana {

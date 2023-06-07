@@ -5,7 +5,7 @@
     grid-template-rows: 3fr 2fr;
     grid-template-columns: 1fr;
     border: .4rem solid black;
-    height: clamp(100px, 30vw, 166.67px);
+    height: clamp(120px, 30vw, 166.67px);
     width: clamp(100px, 1fr, 639px); 
   }
   
@@ -60,3 +60,12 @@
     justify-content: center;
     align-items: center;
   } 
+
+  .tokyo-metro-sign .tokyo-metro-icon{
+    border: 3px solid var(--currentline-color);
+  }
+
+  .tokyo-metro-sign .line-abreviation,
+  .tokyo-metro-sign .station-number{
+    padding-left: 3px;
+  }

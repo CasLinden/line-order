@@ -8,7 +8,6 @@
     background-color:  #1e1e1e;
     color: rgba(255, 255, 255, 0.87);
     border-bottom: var(--border);
-    width: 100%;
   }
   
   .title-section{
@@ -54,8 +53,3 @@
       top: 34px;
     }
   }
-  
-  
-  
-
-
