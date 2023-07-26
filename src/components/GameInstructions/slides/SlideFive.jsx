@@ -1,5 +1,5 @@
 import "/src/css/game-instructions/slide-5.css";
-import ticket from '/src/assets/ticket.svg';
+import ticket from '/src/assets/general-icons/ticket.svg';
 
 
 

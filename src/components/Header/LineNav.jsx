@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { CurrentLineContext } from "/src/CurrentLineContext";
 import DropDownMenu from "/src/components/Header/DropDownMenu";
-import caret from "/src/assets/caret.svg";
+import caret from "/src/assets/general-icons/caret.svg";
 
 import "/src/css/line-nav.css";
 

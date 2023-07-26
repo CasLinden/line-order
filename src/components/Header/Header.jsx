@@ -1,5 +1,5 @@
 import { LineNav } from "/src/components/header/LineNav.jsx";
-import train from "/src/assets/train.svg";
+import train from "/src/assets/general-icons/train.svg";
 import "/src/css/header.css";
 
 export default function Header() {

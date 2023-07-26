@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import arrows from "/src/assets/arrows.svg";
+import arrows from "/src/assets/general-icons/arrows.svg";
 
 function Arrows ({goBackwards, bool}) {
     const backwardsRef = useRef(null);

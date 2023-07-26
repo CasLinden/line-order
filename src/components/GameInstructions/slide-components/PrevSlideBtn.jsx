@@ -1,4 +1,4 @@
-import arrowLeft from '/src/assets/arrow-left.svg'
+import arrowLeft from '/src/assets/general-icons/arrow-left.svg'
 
 function PrevSlideBtn ({slideIn}) {
     return (

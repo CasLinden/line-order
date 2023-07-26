@@ -1,5 +1,5 @@
 import "/src/css/station-icons/default-station-icon.css";
-import stationImageNegative from "/src/assets/station-negative.svg";
+import stationImageNegative from "/src/assets/general-icons/station-negative.svg";
 
 function DefaultIcon({ num, abr }) {
         return (

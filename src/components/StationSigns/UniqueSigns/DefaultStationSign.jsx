@@ -1,5 +1,5 @@
 import "/src/css/station-signs/default-station-sign.css";
-import stationImage from "/src/assets/station.svg";
+import stationImage from "/src/assets/general-icons/station.svg";
 import hyphenateString from "/src/utils/hyphenateString";
 import { v4 as uuidv4 } from "uuid";
 

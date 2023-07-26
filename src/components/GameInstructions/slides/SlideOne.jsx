@@ -5,7 +5,7 @@ import JRStationSign from "/src/components/StationSigns/UniqueSigns/JRStationSig
 import JRIcon from "/src/components/StationIcons/UniqueIcons/JRIcon.jsx";
 import IconHolder from "/src/components/StationIcons/IconHolder.jsx";
 import station from "/src/utils/station.js";
-import cursor from "/src/assets/cursor.svg";
+import cursor from "/src/assets/general-icons/cursor.svg";
 import "/src/css/game-instructions/slide-1.css";
 
 function SlideOne() {

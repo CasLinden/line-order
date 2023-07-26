@@ -1,6 +1,6 @@
 import "/src/css/game-status-hud.css";
-import ticket from "/src/assets/ticket.svg";
-import resetIcon from "/src/assets/reset.svg";
+import ticket from "/src/assets/general-icons/ticket.svg";
+import resetIcon from "/src/assets/general-icons/reset.svg";
 import useIsMobile from "/src/hooks/useIsMobile";
 
 function GameStatusHud({ earnedTicketParts, reset, consumeTicket }) {

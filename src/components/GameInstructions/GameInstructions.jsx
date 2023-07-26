@@ -11,7 +11,7 @@ import NextSlideBtn from "/src/components/GameInstructions/slide-components/Next
 import HideSlideshowBtn from "/src/components/GameInstructions/slide-components/HideSlideshowBtn"
 import ClickShield from "/src/components/GameInstructions/ClickShield"
 import extraSlideAnimations from "/src/utils/extraSlideAnimations";
-import info from "/src/assets/info.svg"
+import info from "/src/assets/general-icons/info.svg"
 import "/src/css/game-instructions/game-instructions.css";
 import "/src/css/game-instructions/override-colors.css"
 
@@ -51,7 +51,7 @@ function GameInstructions() {
         {instructionsHidden ? (
         <div className="instructions-placeholder">
           <SlideZero instructionsHidden={true} />
-          <div onClick={showInstructions}>
+          <div className="i-container" onClick={showInstructions}>
             <img className="show-slideshow" src={info} alt="i for info" />
           </div>
         </div>

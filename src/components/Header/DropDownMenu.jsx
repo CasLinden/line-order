@@ -9,8 +9,8 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import "/src/css/drop-down-menu.css";
 import clearStationSearchInput from "/src/utils/clearStationSearchInput";
-import arrowRight from "/src/assets/arrow-right.svg";
-import arrowLeft from "/src/assets/arrow-left.svg";
+import arrowRight from "/src/assets/general-icons/arrow-right.svg";
+import arrowLeft from "/src/assets/general-icons/arrow-left.svg";
 
 export default function DropDownMenu({ activeMenu, setActiveMenu, toggleDropDown }) {
   const { currentLine, setCurrentLine } = useContext(CurrentLineContext);

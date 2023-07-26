@@ -12,7 +12,7 @@ function SlideSix({hide}){
                <div className="slide-instruction"> Start by picking<br></br> your first station, <br></br> good luck!</div>
             </div>
                <button className="disable-instructions" onClick={handleButtonClick}>
-                    Don't show slideshow again
+                    Hide Slideshow
                </button>
         </div>
     )

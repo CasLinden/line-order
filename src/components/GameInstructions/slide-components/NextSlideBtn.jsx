@@ -1,4 +1,4 @@
-import arrowRight from '/src/assets/arrow-right.svg'
+import arrowRight from '/src/assets/general-icons/arrow-right.svg'
 import hyphenateString from "/src/utils/hyphenateString";
 
 function NextSlideBtn ({slideIn, text}) {

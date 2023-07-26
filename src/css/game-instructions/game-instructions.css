@@ -3,7 +3,6 @@
 .game-instructions {
   width: 100%;
   display: grid;
-  height: 280px;
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
@@ -84,10 +83,14 @@
 }
 
 .instructions-placeholder{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ height: 240px;
+ display: relative;
+}
+
+.i-container{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
 }
 
 .show-slideshow{
