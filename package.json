@@ -1,9 +1,9 @@
 {
-  "name": "yamanote-line",
+  "name": "line-order",
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://caslinden.github.io/yamanote-line",
+  "homepage": "https://caslinden.github.io/line-order",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
